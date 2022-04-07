@@ -13,3 +13,20 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Misc output files
+*.log
+
+# Emacs temp files
+*~
+\#*\#
+*.elc
+auto-save-list
+.\#*
+ltximg/
+
+# Node.js
+node_modules/
+
+# Misc subfolders
+private/
