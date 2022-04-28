@@ -66,6 +66,9 @@ Some of this may be specific to the current config.
   (org-insert-structure-template)
 - ~C-c C-v C-t~
   (org-babel-tangle)
+**** View
+- ~C-c C-x C-v~
+  (org-toggle-inline-images)
 *** Plugins
 **** Treemacs
 - ~C-x t t~

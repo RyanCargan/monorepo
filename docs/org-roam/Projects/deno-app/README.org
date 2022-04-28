@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       117f4156-dcc5-461b-bddb-726e22d735c5
+:END:
+Deno app.
+* Files
+** root
+:PROPERTIES:
+:ID:       0305b877-3bec-40f4-9e06-325d4728a538
+:tangle-dir: ../../../../projects/deno-app
+:END:
+#+begin_src deno :noweb yes :tangle (org-in-tangle-dir "index.mjs") :mkdirp yes :exports both :allow net :results output
+const response = await fetch("https://httpbin.org/get?hello=world");
+const json = await response.json();
+
+console.log(json.args);
+#+end_src
+
+#+RESULTS:
+: { hello: "world" }

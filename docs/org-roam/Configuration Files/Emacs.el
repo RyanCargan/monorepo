@@ -18,7 +18,9 @@
 (setq straight-use-package-by-default t)
 
 (use-package restart-emacs)
-;(use-package auto-indent-mode) ; Bugged: https://github.com/company-mode/company-mode/issues/1002
+;(use-package auto-indent-mode) ; Bugged? https://github.com/company-mode/company-mode/issues/1002
+
+(setq debug-on-error t)
 
 (use-package evil)
 
@@ -135,6 +137,7 @@
   :config (treemacs-set-scope-type 'Perspectives))
 
 (use-package magit)
+(use-package git-timemachine)
 
 (use-package find-file-in-project)
 
@@ -146,9 +149,6 @@
 ;; WARNING: Manual copying/installation of fonts required
 (use-package all-the-icons
   :if (display-graphic-p))
-
-(use-package nix-mode
-  :mode "\\.nix\\'")
 
 ;;; Terminal
 ;; WARNING: Manual install of cmake, libtool-bin and libvterm required
@@ -193,27 +193,48 @@
   :defer t
   :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
-(use-package company-nixos-options
-  :defer t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-nixos-options)))
+(use-package company-nixos-options)
 
-(eval-after-load 'org
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   (append org-babel-load-languages
-           '((C . t) ; Should cover C++ as well?
-             (python . t)
-             (js . t)
-             (sass . t)
-             (gnuplot . t)
-             (sql . t)
-             (sqlite .t)
-             (shell . t) ; sh/shell?
-             (dot)
-             (makefile)
-             (java)))))
+;(add-to-list 'company-backends 'company-nixos-options) ; Buggy
+
+(use-package nix-mode
+  :mode "\\.nix\\'"
+  :config
+  (add-hook 'nix-mode-hook
+	    '(lambda ()
+	       (set (make-local-variable 'company-backends)
+		    '((company-dabbrev-code company-nixos-options))))))
+
+(setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t
+    org-src-tab-acts-natively t
+    org-src-preserve-indentation t)
+
+(use-package go-mode)
+(use-package ob-go)
+
+;(use-package deno-fmt)
+(use-package ob-deno)
+
+  (eval-after-load 'org
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     (append org-babel-load-languages
+             '((C . t) ; Should cover C++ as well?
+               (python . t)
+               (js . t)
+               (sass . t)
+               (gnuplot . t)
+               (sql . t)
+               (sqlite .t)
+               (shell . t) ; sh/shell?
+               (dot . t)
+               (makefile . t)
+               (java . t)
+               (go . t)
+	           (deno . t)))))
+
+;; optional (required the typescript.el)
+(add-to-list 'org-src-lang-modes '("deno" . typescript))
 
 ;; Tangle Directory
 (defun org-in-tangle-dir (sub-path)

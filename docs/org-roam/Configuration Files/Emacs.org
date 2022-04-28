@@ -34,7 +34,11 @@ Then edit the config as needed from this file you're on right now.
 ** Early packages
 #+begin_src elisp
   (use-package restart-emacs)
-  ;(use-package auto-indent-mode) ; Bugged: https://github.com/company-mode/company-mode/issues/1002
+  ;(use-package auto-indent-mode) ; Still bugged? https://github.com/company-mode/company-mode/issues/1002
+#+end_src
+** Debugging
+#+begin_src elisp
+(setq debug-on-error t)
 #+end_src
 ** Main package list
 #+begin_src elisp
@@ -175,9 +179,10 @@ Then edit the config as needed from this file you're on right now.
     :config (treemacs-set-scope-type 'Perspectives))
 
 #+end_src
-** Magit
+** Git
 #+begin_src elisp
-  (use-package magit)
+(use-package magit)
+(use-package git-timemachine)
 #+end_src
 ** Evil Collection
 #+begin_src elisp :tangle no
@@ -201,9 +206,9 @@ TODO.
   (use-package all-the-icons
     :if (display-graphic-p))
 
-  (use-package nix-mode
-    :mode "\\.nix\\'")
-
+#+end_src
+** Terminal & minibuffer
+#+begin_src elisp
   ;;; Terminal
   ;; WARNING: Manual install of cmake, libtool-bin and libvterm required
   ;; WARNING: Manual edit of CMakeLists.txt required
@@ -232,6 +237,9 @@ TODO.
                 ("C-p" . icomplete-backward-completions)
                 ("C-v" . icomplete-vertical-toggle)))
 
+#+end_src
+** Company autocompletion
+#+begin_src elisp
   (use-package company
     :defer t
     :init (global-company-mode)
@@ -247,11 +255,33 @@ TODO.
     :defer t
     :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
-  (use-package company-nixos-options
-    :defer t
-    :init
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-nixos-options)))
+  (use-package company-nixos-options)
+
+  ;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
+#+end_src
+** Miscellaneous modes
+#+begin_src elisp
+  (use-package nix-mode
+    :mode "\\.nix\\'"
+    :config
+    (add-hook 'nix-mode-hook
+	      '(lambda ()
+		 (set (make-local-variable 'company-backends)
+		      '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
+#+end_src
+** Source editing settings
+#+begin_src elisp
+  (setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t.
+      org-src-tab-acts-natively t
+      org-src-preserve-indentation t)
+#+end_src
+** Babel language support
+#+begin_src elisp
+(use-package go-mode)
+(use-package ob-go)
+
+;(use-package deno-fmt)
+(use-package ob-deno)
 
   (eval-after-load 'org
     (org-babel-do-load-languages
@@ -265,9 +295,14 @@ TODO.
                (sql . t)
                (sqlite .t)
                (shell . t) ; sh/shell?
-               (dot)
-               (makefile)
-               (java)))))
+               (dot . t)
+               (makefile . t)
+               (java . t)
+               (go . t)
+	           (deno . t)))))
+
+;; optional (required the typescript.el)
+(add-to-list 'org-src-lang-modes '("deno" . typescript))
 #+end_src
 ** Org tangling
 #+begin_src elisp
