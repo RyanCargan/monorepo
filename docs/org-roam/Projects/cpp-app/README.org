@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       d4635502-bd60-456a-8270-27194068115b
+:END:
+C++ testbed app.
+* Files
+Docs in separate root folders.
+Tests mixed with code and removed automatically before build by preprocessor.
+** root
+:PROPERTIES:
+:ID:       db85c011-64ba-4f02-aaf6-d66436fc8de0
+:tangle-dir: ../../../../projects/cpp-app
+:END:
+** src
+:PROPERTIES:
+:ID:       37677e27-ea15-45cc-a66a-e9448df13d32
+:tangle-dir: ../../../../projects/cpp-app/src
+:END:
+*** main.cpp
+#+begin_src cpp :noweb yes :tangle (org-in-tangle-dir "main.cpp") :mkdirp yes :exports both
+  #include <iostream>
+
+  using namespace std;
+
+   int main(int argc, char* argv[])
+   {
+     cout << "Hello world!\n";
+     return 0;
+   }
+#+end_src
+
+#+RESULTS:
+: Hello world!
+
+Most compilers should add the return automatically.

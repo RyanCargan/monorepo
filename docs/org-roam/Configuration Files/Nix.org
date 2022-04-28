@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       d2a0ac6b-ab77-4bab-99da-fc9dc3ae7a01
+:END:
+System configurations with Nix package manager and NixOS.
+* Desktop (/etc/nixos)
+** configuration.nix
+** flake.nix
+** hardware-configuration.nix (auto-generated example)
+** flake.lock (auto-generated example)
+* Server (/etc/nixos)
+** configuration.nix
+** hardware-configuration.nix (auto-generated example)

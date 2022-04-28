@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       c731bfd2-ff8c-4e2f-a1e5-6478af787b5e
+:END:
+Required source blocks for headless publishing on server.
+Quick tests by switching out config path lines in local init.el might be a good idea before uploading.
+Try ~emacs.exe --batch --load build.el~ or something similar.
+* init.el
+** HTML export
+Use ~(org-publish "org")~ to export to HTML.
+#+begin_src elisp
+  (require 'ox-publish)
+  (setq org-publish-project-alist
+	'(
+
+	  ("org-notes"
+	   :base-directory "~/workspace/monorepo/docs/org-roam/"
+	   :base-extension "org"
+	   :publishing-directory "~/workspace/monorepo/docs/public_html/"
+	   :recursive t
+	   :publishing-function org-html-publish-to-html
+	   :headline-levels 4
+	   :auto-preamble t
+	   )
+
+	  ("org-static"
+	   :base-directory "~/workspace/monorepo/docs/org-roam/"
+	   :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|svg"
+	   :publishing-directory "~/workspace/monorepo/docs/public_html/"
+	   :recursive t
+	   :publishing-function org-publish-attachment
+	   )
+
+	  ("org" :components ("org-notes" "org-static"))
+	  ))
+#+end_src
+** LaTeX dependencies
+Include ~texlive.combined.scheme-full~ in the list of installed packages on NixOS.
+First section is imports of packages.
+Importing their functionality happens next.
+Note that the middle section contains a ~plist-put~ call and the last contains ~plist-get~ calls.
+~with-eval-after-load 'org~ removed for batch mode.
+#+begin_src elisp
+    (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+    (setq org-preview-latex-default-process 'dvisvgm)
+    (add-to-list 'org-latex-packages-alist '("" "lplfitch"))
+    (add-to-list 'org-latex-packages-alist '("" "prooftrees"))
+    (add-to-list 'org-latex-packages-alist '("" "amsmath"))
+    (add-to-list 'org-latex-packages-alist '("" "mathtools"))
+    
+    (plist-put org-format-latex-options :latex-fragment-pre-body "\\forestset{line numbering=false}\n\\mathtoolsset{showonlyrefs}\n")
+
+    (defun org-inject-latex-fragment (orig-func &rest args)
+      (setf (car args)
+            (concat
+             (or (plist-get org-format-latex-options :latex-fragment-pre-body) "")
+             (car args)
+             (or (plist-get org-format-latex-options :latex-fragment-post-body) "")))
+      (apply orig-func args))
+
+    (advice-add 'org-create-formula-image :around #'org-inject-latex-fragment)
+#+end_src

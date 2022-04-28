@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       3f08087f-db31-4dff-9cb2-2c782fa7d0df
+:END:
+* Slip-Box Notes
+** Quick Summary
+Just a collection of linked notes and code.
+** Details & Context
+Basic idea is organizing ideas into a graph (literally, in a graph database of sorts).
+https://www.levelupfun.com/articles/writing-to-understand-the-zettelkasten-system-of-smart-notes
+* Structure
+** Folders
+*** Kanban
+Work schedule.
+*** Configuration Files
+Literate config files.
+Some are tangled similarly to the other source files below.
+Others like Emacs.org gets tangled to Emacs.el and load by init.el located in .emacs.d directory.
+*** Projects
+Literate source files.
+Tangled to various subfolders inside the projects folder in the root directory.

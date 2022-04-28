@@ -1,0 +1,26 @@
+:PROPERTIES:
+:ID:       c45ade80-279f-4004-abec-8b6db47b8d5e
+:END:
+C++ is a low-level, multi-paradigm programming language with a focus on zero-cost abstractions and flexibility.
+Its static type system, manual memory management and multi-paradigm nature can make it overwhelming to pick up for beginners,and its focus on flexibility (not constraining the programmer whenever possible) comes with the tradeoff of allowing programmersto (potentially) 'shoot themselves in the foot' more often.
+
+The language became more consistent with the release of C++11.
+It and later releases added features such as smart pointers and type deduction.
+The language has gotten (relatively) more accessible with more recent editions, however those additions have also added to the 'bloat' of the language which can result in the accessibility of the language staying relatively constant over time.
+However, there has been a large number of good books and other reference material released over time which can ease the learning curve considerably compared to the time before the release of C++11.
+
+* About C
+:PROPERTIES:
+:ID:       fd77b8da-5ab7-41b6-b183-371f6d80023c
+:END:
+The C language has some connections to C++. C++ has a very high level of interoperability with C although it is not a proper superset of C.
+You may find frequent references to 'C/C++' online.
+C++ compilers can make use of C code (with some caveats) and many tools of each language tend to come bundled together.
+C++ itself is sometimes used as a kind of 'C with classes'.
+For example, Google's internal style used a similar approach, restricting usage of many advanced features of C++ such as multiple inheritance, among other things.
+
+* Issues with C++
+** Misunderstanding pointers
+** Not respecting levels of abstraction
+** Coding style varies heavily between different projects and companies
+** Lack of a widely recongnized 'standard' certification

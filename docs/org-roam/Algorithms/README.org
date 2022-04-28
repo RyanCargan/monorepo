@@ -1,0 +1,107 @@
+:PROPERTIES:
+:ID:       16812a77-d5ba-4b8c-9bf8-4bae6d3d520d
+:END:
+Information to prep for interview questions related to data structures and algorithms and SE in general.
+* Software Engineering
+** Systematic Program Design
+*** Communication
+**** Documentation
+Use ideas from [[Design Recipes]] as needed here.
+You should be trying to develop code, docs and tests more or less alongside each other when possible.
+If you need to rush at some point or you need to document and write a test harness for third party code, use your standard workflow as a template and adjust as needed.
+***** Literate Doc Comments
+***** Standard Code Comments
+**** Presentation
+**** Context-Specific Advice
+*** Test-First Development
+Tests in this context act as a specification to constrain and effectively direct development effort.
+*** Design Recipes
+**** The Role of Domain Expertise
+***** Examples
+****** Feature Extraction
+Picking 'good' features when implementing the k-nearest neighbors (KNN) algorithm.
+Good features directly correlate with the items you're trying to recommend.
+Good features don't have a bias.
+*** Level of Detail
+**** Design
+**** Implementation
+** Personal Metrics
+** SOLID Principles
+** Paradigms
+*** Object-Oriented Programming
+*** Functional Programming
+*** Procedural Programming
+** Design Patterns
+*** Adapter
+*** Factory
+*** Observer
+** Language-Specific Issues
+*** Operator Precedence
+*** Variable & Function Scope
+* Computer Science
+** Complexity/Asymptotic Analysis
+How does an algorithm perform as its input set gets larger?
+Recommend watching video 10 and 11 of MIT's /6.0001 Introduction to Computer Science and Programming in Python. Fall 2016/.
+*** Notation
+**** Big Ο - Worst Case
+Expresses upper bound on algorithm runtime.
+**** Big θ (Theta) - Average Case
+Expresses both upper & lower bound on algorithm runtime.
+**** Big Ω (Omega) - Best Case
+Expresses lower bound on algorithm runtime.
+**** Examples
+Applicable to all three types.
+| Name        | Symbols       |
+|-------------+---------------|
+| Constant    | $O(1)$        |
+| Logarithmic | $O(\log{}n)$  |
+| Linear      | $O(n)$        |
+| $n\log{}n$  | $O(n\log{}n)$ |
+| Quadratic   | $O(n^2)$      |
+| Cubic       | $O(n^3)$      |
+| Polynomial  | $n^{O(1)}$    |
+| Exponential | $2^{O(n)}$    |
+Polynomial time is apparently particularly relevant as an upper bound (see Cobham's thesis which asserts that feasible computation is only possible for problems if they're in complexity class P, which includes all decision problems solvable via deterministic Turing machine in polynomial time).
+*** Tradeoffs
+- Space versus time
+- Average verus worst versus best case
+  The former two are the most widely used.
+- Other tradeoffs to consider
+  Time to implement.
+  Ease of comprehension (i.e. ease of maintenance). 
+** Algorithms
+*** Standard Search & Sort Algorithms
+'Cookier cutter' search & sort algorithms go in subsections under this one.
+More advanced/specialized algorithms (even if they have 'sort' or 'search' in their name) will be in their own sections (e.g. [[Topological Sort]]).
+Recommend watching video 12 of MIT's /6.0001 Introduction to Computer Science and Programming in Python. Fall 2016/.
+**** Binary Search
+***** Requirements
+Data is sorted in advance.
+*** Dynamic Programming
+**** Top-Down (Memoization)
+***** Use Cases
+****** Simple Regular Expressions
+**** Bottom-Up (Tabulation)
+*** Topological Sort
+**** Requirements
+Directed acyclic graph.
+**** Use Cases
+***** Dependency Management
+***** Scheduling
+*** KNN
+k-NN/k-nearest neighbors.
+*** Naive Bayes
+*** Distributed Algorithms
+**** MapReduce
+*** Probabilistic Algorithms
+**** HyperLogLog
+** Data Structures
+Start composing some generic node-based data structures in C++ for practice.
+*** Arrays
+*** Linked Lists
+*** Hash Map (also Hash Table & Dictionary)
+*** Graphs
+*** Distributed Data Structures
+**** Distributed Hash Table
+*** Probabilistic Data Structures
+**** Bloom Filter

@@ -1,0 +1,186 @@
+:PROPERTIES:
+:ID:       ce3dcfcf-509e-4594-8262-4ee010e63059
+:END:
+#+OPTIONS: tex:dvisvgm
+A fancy text editor.
+* Cheatsheet
+Some of this may be specific to the current config.
+** Essentials
+*** Basic prefix keys
+- ~M~
+  Meta/Alt.
+- ~S~
+  Shift.
+- ~C~
+  Ctrl.
+*** Cancel
+- ~C-g~
+  (keyboard-quit)
+*** Get information
+- ~C-h o~
+  (describe-symbol)
+  Symbol can be a variable, function and/or face.
+- ~C-h k~
+  (describe-key)
+- ~C-h v~
+  (describe-variable)
+- ~C-h i~
+  (info)
+  Opens the manual.
+*** Execute command
+- ~M-x~
+  (execute-extended-command)
+*** Navigation
+- ~C-x 1~
+  (delete-other-windows)
+- ~C-x 0~
+  (delete-window)
+- ~C-x <arrow>~
+  Switch buffer.
+- ~C-x C-b~
+  (list-buffers)
+*** File/Buffer operations
+- ~C-x k~
+  (kill-buffer)
+** Extras
+*** Org-Mode
+**** Context-Sensitive
+- ~C-c C-c~
+  (org-ctrl-c-ctrl-c)
+  - Source blocks
+    Execute.
+**** Structuring
+- ~C-c C-x p~
+  (org-set-property)
+- ~S-M-<arrow>~
+  Shift subtree with contents.
+- ~C-RET~
+  New heading.
+- ~M-RET~
+  New bullet.
+  Note to self: rebind dwm Alt hotkey to Super.
+**** Programming
+- ~C-c '~
+  (org-edit-special)
+- ~C-c C-,~
+  (org-insert-structure-template)
+- ~C-c C-v C-t~
+  (org-babel-tangle)
+*** Plugins
+**** Treemacs
+- ~C-x t t~
+  (treemacs)
+  Toggles treemacs file explorer pane.
+- ~C-x t d~
+  (treemacs-select-directory)
+**** Magit
+Recommened change to Git:
+~git config --global status.showUntrackedFiles all~
+- ~C-x g~
+  (magit-status)
+  - ~<tab>~
+    Fold & unfold status items.
+  - ~<enter>~
+    Open status item. Standard buffer for files and diff blocks for stash items.
+  - ~q~
+    Close diff view.
+  - ~?~
+    Transient panel.
+    - ~c~
+      Commit menu.
+    - ~s~
+      Be mindful of what section the cursor is in or what item it's on.
+* Troubleshooting
+Try ~C-u M-x org-reload~ if org functionality gets messed up (e.g. ~C-c n f~  not working) along with making a short edit to Emacs.org and resaving before restarting Emacs.
+Seems mot resaving before exiting will result in strange issues at the moment.
+Try the below init.el file for now.
+** init.el
+#+begin_src elisp
+  ;;;; Load init file from separate directory
+  (defconst literate-config-path "~/dev/work/monorepo/docs/org-roam/Configuration Files/Emacs.org"
+    "Path to literate config file.")
+  (org-babel-load-file literate-config-path)
+  ;;; Bugfix
+  (shell-command (format "touch \"%s\"" (expand-file-name literate-config-path)))
+#+end_src
+* LaTeX Examples
+\(
+x^n + y^n = z^n
+\)
+
+\(
+\fitchprf{}{
+\subproof{\pline[1.]{\uni{x}{(Cube(x)\lif Small(x))}}}{
+\subproof{\pline[2.]{\exi{x}{Cube(x)}}}{
+\boxedsubproof[3.]{a}{Cube(a)}{
+\pline[4.]{Cube(a)\lif Small(a)}[\lalle{1}]\\
+\pline[5.]{Small(a)}[\life{4}{3}]\\
+\pline[6.]{\exi{x}{Small(x)}}[\lexii{5}]
+}
+\pline[7.]{\exi{x}{Small(x)}}[\lexie{2}{3--6}]
+}
+\pline[8.]{\exi{x}{Cube(x)}\lif \exi{x}{Small(x)}}[\lifi{2--7}]
+}
+\pline[9.]{\brokenform{(\uni{x}{(Cube(x)\lif Small(x))}\lif}{
+\formula{(\exi{x}{Cube(x)} \lif \exi{x}{Small(x)})}}}[\lifi{1--8}]
+}
+}
+\eqref{}
+\)
+
+\begin{fitch}
+\fj A \\
+\fa \fh B \\
+\fa \fa A \\
+\fa B \rightarrow A \\
+A \rightarrow (B \rightarrow A) \\
+\end{fitch}
+
+\begin{forest}
+[$P \vee (Q \vee \lnot R)$
+  [$P \lif \lnot R$
+    [$Q \lif \lnot R$
+      [$\lnot\lnot R$
+        [$P$
+          [$\lnot P$]
+          [$\lnot R$]
+        ]
+        [$Q \vee \lnot R$
+          [$Q$
+            [$\lnot Q$]
+            [$\lnot R$]
+          ]
+          [$\lnot R$]
+        ]
+      ]
+    ]
+  ]
+]
+\end{forest}
+
+\begin{prooftree}
+  {
+    line no shift=5,
+    just refs right,
+  }
+  [Fa, name=fa
+    [{\lnot((Fa \land \forall y (Fy \supset y=a))} \land Ga), checked
+      [{\lnot(Fa \land \forall y (Fy \supset y=a))}, checked, split here={So far, so automatic. The right hand branch closes, for we have}
+        [\lnot Fa, just={from:!u}, close={:!uuu,!c}
+        ]
+        [{\lnot \forall y (Fy \supset y=a)}, checked
+          [{\exists y \lnot (Fy \supset y=a)}, just={from:!u}, checked=b
+            [{\lnot (Fb \supset b=a)}, just={from:!u}
+            ]
+          ]
+        ]
+      ]
+      [\lnot Ga
+        [Fa \supset Ga, just=from 3
+          [\lnot Fa, close={:fa,!c}]
+          [Ga, close={:!uu,!c}]
+        ]
+      ]
+    ]
+  ]
+\end{prooftree}

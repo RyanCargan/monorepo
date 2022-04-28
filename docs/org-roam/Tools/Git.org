@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       3732edfb-8eb5-42a6-99b1-167b39c1b7ad
+:END:
+Version control system notes.
+* Miscellaneous Tips
+** Rename folder
+~git mv <old name> <new name>~
+Use a temp name to change case if needed.

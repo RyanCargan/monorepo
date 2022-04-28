@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       d92a418a-0359-4f5e-9ca8-a44882126fcc
+:END:
+C is a...
+
+* About C++
+:PROPERTIES:
+:ID:       8f90f950-2539-4424-9311-9fcbf6146707
+:END:
+The C++ language has connections to C worth exploring.

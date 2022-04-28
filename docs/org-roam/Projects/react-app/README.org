@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       393a0291-f6b7-4983-9692-03bd1ab5a7bc
+:END:
+React SPA.
+* Files
+Docs in separate root folders.
+Tests mixed with code and removed automatically before build by preprocessor.
+** root
+:PROPERTIES:
+:ID:       1b1798da-0060-46d8-ae4b-1042a40e7602
+:tangle-dir: ../../../../projects/react-app
+:END:
+** src
+:PROPERTIES:
+:ID:       cf2b141d-1971-49e8-b65f-9b0b2c15195c
+:tangle-dir: ../../../../projects/react-app/src
+:END:
+*** App.jsx
+TODO.

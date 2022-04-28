@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       92de2a02-74aa-4111-a648-17ffe63204a7
+:END:
+Nix package manager.
+

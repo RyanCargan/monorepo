@@ -1,0 +1,3 @@
+*  monorepo
+Dumping ground for miscellaneous personal work and configuration info.
+Currently under construction.

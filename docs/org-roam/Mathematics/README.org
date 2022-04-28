@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       1d6cba10-01ce-41a5-93e6-56aa011968ee
+:END:
+Self-study notes for mathematical topics.
+* Topics
+** Section 1
+*** Algebra 1
+:PROPERTIES:
+:ID:       f7ae1d70-4c76-4dd4-b944-a34fc0533f30
+:END:
+*** Geometry
+:PROPERTIES:
+:ID:       ce2d5362-83b5-4253-b24d-56cab2cf5288
+:END:
+*** Algebra 2
+:PROPERTIES:
+:ID:       899fe9ab-becf-458d-b7fd-e92e64ea5ba2
+:END:
+*** Precalculus
+:PROPERTIES:
+:ID:       21268244-aef8-4508-bea7-3083221aff2d
+:END:
+Generally a review of [[Algebra 1]] & [[Algebra 2]] with a few concepts added from trigonometry and possibly [[Linear Algebra]] like matrices to prepare for [[Calculus]].
+*** Calculus
+:PROPERTIES:
+:ID:       1ec59a67-0773-46a0-8047-06a643c7c1d8
+:END:
+** Section 2
+*** Multivariable Calculus
+:PROPERTIES:
+:ID:       72558583-6028-4912-ab52-33842b470c33
+:END:
+*** Differential Equations
+:PROPERTIES:
+:ID:       b4351787-f1ee-4979-9f53-02b27ba522be
+:END:
+Might want to skip ahead to [[Linear Algebra]] for a bit as it can make learning this topic easier.
+** Section 3
+*** Linear Algebra
+:PROPERTIES:
+:ID:       8c1d3f9b-b2d4-429f-925c-78b78bfd3792
+:END:
+Expands on ideas like systems of equations and generalizing it as a theory.
+Makes learning [[Differential Equations]] easier.
+*** Abstract Algebra
+:PROPERTIES:
+:ID:       6cc617c0-5b2a-43cf-a5fa-be6bd7907dfc
+:END:
+Studies mathematical objects such as groups and rings which can be seen as generalizations of number systems.
+*** Galois Theory
+:PROPERTIES:
+:ID:       53d7bcb8-4d64-47be-b329-a6eee88a4fff
+:END:
+Provides methods to reduce problems in field theory to problems in group theory.
+** Section 4
+*** Real Analysis
+:PROPERTIES:
+:ID:       37afe56f-1e6c-41f6-a4a6-f2570f966844
+:END:
+Can be seen as a more rigorous revisit of concepts learned in Calculus.

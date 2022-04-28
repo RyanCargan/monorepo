@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b22c0a94-80e4-4284-a37d-054eb2d1daab
+:END:
+Java-inspired language (with less deviation than something like Scala or Clojure) commonly used in Android development.
+* Current Use Cases
+Using for the frontend parts in a mostly native (C++) Android project.
