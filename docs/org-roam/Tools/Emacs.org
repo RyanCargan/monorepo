@@ -66,6 +66,8 @@ Some of this may be specific to the current config.
   (org-insert-structure-template)
 - ~C-c C-v C-t~
   (org-babel-tangle)
+- ~(C-c C-v b)/(C-c C-v C-b)~
+  (org-babel-execute-buffer)
 **** View
 - ~C-c C-x C-v~
   (org-toggle-inline-images)

@@ -259,6 +259,12 @@ TODO.
 
   ;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
 #+end_src
+** Source editing settings
+#+begin_src elisp
+  (setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t.
+      org-src-tab-acts-natively t
+      org-src-preserve-indentation t)
+#+end_src
 ** Miscellaneous modes
 #+begin_src elisp
   (use-package nix-mode
@@ -268,19 +274,16 @@ TODO.
 	      '(lambda ()
 		 (set (make-local-variable 'company-backends)
 		      '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
-#+end_src
-** Source editing settings
-#+begin_src elisp
-  (setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t.
-      org-src-tab-acts-natively t
-      org-src-preserve-indentation t)
+
+(use-package go-mode)
+(use-package js2-mode)
+(use-package typescript-mode)
+(use-package deno-fmt
+  :hook (js2-mode typescript-mode))
 #+end_src
 ** Babel language support
 #+begin_src elisp
-(use-package go-mode)
 (use-package ob-go)
-
-;(use-package deno-fmt)
 (use-package ob-deno)
 
   (eval-after-load 'org
@@ -496,6 +499,11 @@ TODO. Code not ready.
     (delete-trailing-whitespace)
     (indent-region (point-min) (point-max) nil)
     (untabify (point-min) (point-max)))
+
+  (defun my/query ()
+    "Return yes or no."
+    (interactive)
+    (if (y-or-n-p "Run operation?") "yes" "no"))
 #+end_src
 ** Miscellaneous packages
 #+begin_src elisp

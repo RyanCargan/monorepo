@@ -18,7 +18,7 @@
 (setq straight-use-package-by-default t)
 
 (use-package restart-emacs)
-;(use-package auto-indent-mode) ; Bugged? https://github.com/company-mode/company-mode/issues/1002
+;(use-package auto-indent-mode) ; Still bugged? https://github.com/company-mode/company-mode/issues/1002
 
 (setq debug-on-error t)
 
@@ -195,24 +195,27 @@
 
 (use-package company-nixos-options)
 
-;(add-to-list 'company-backends 'company-nixos-options) ; Buggy
+;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
 
-(use-package nix-mode
-  :mode "\\.nix\\'"
-  :config
-  (add-hook 'nix-mode-hook
-	    '(lambda ()
-	       (set (make-local-variable 'company-backends)
-		    '((company-dabbrev-code company-nixos-options))))))
-
-(setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t
+(setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t.
     org-src-tab-acts-natively t
     org-src-preserve-indentation t)
 
-(use-package go-mode)
-(use-package ob-go)
+(use-package nix-mode
+    :mode "\\.nix\\'"
+    :config
+    (add-hook 'nix-mode-hook
+	      '(lambda ()
+		 (set (make-local-variable 'company-backends)
+		      '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
 
-;(use-package deno-fmt)
+(use-package go-mode)
+(use-package js2-mode)
+(use-package typescript-mode)
+(use-package deno-fmt
+  :hook (js2-mode typescript-mode))
+
+(use-package ob-go)
 (use-package ob-deno)
 
   (eval-after-load 'org
@@ -397,6 +400,11 @@
   (delete-trailing-whitespace)
   (indent-region (point-min) (point-max) nil)
   (untabify (point-min) (point-max)))
+
+(defun my/query ()
+  "Return yes or no."
+  (interactive)
+  (if (y-or-n-p "Run operation?") "yes" "no"))
 
 (use-package zone-nyan)
 
