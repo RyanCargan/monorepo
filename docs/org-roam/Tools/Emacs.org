@@ -95,6 +95,9 @@ Recommened change to Git:
       Commit menu.
     - ~s~
       Be mindful of what section the cursor is in or what item it's on.
+**** Git-Timemachine
+- ~M-x git-timemachine~
+  Time travel mode.
 * Troubleshooting
 Try ~C-u M-x org-reload~ if org functionality gets messed up (e.g. ~C-c n f~  not working) along with making a short edit to Emacs.org and resaving before restarting Emacs.
 Seems mot resaving before exiting will result in strange issues at the moment.

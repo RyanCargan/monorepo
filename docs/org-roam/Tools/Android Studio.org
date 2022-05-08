@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       6657f677-7e02-43be-bec4-1ee1ae1f9c62
+:END:
+* Android Dev Tools
+** ADB
+*** List devices
+Enable USB debugging in developer options.
+Connect via USB and list.
+#+begin_src shell
+adb devices -l
+#+end_src
+
+#+RESULTS:
+: List of devices attached
+*** Set port
+#+begin_src shell
+adb tcpip 5555
+#+end_src
+
+#+RESULTS:
+
+*** Get info
+Get IP then disconnect.
+#+begin_src shell
+ adb shell "ip addr show wlan0 | grep -e wlan0$ | cut -d\" \" -f 6 | cut -d/ -f 1"
+#+end_src
+
+#+RESULTS:
+: 192.168.1.101
+*** Connect device/emulator
+Should be able to connect after removing.
+Might not need to connect via USB if IP is known.
+Network needs to be the same though.
+#+begin_src shell
+adb connect 192.168.1.101:5555
+#+end_src
+
+#+RESULTS:
+: connected to 192.168.1.101:5555
+
+*** Forward port
+#+begin_src shell
+adb forward tcp:8080 tcp:8080
+#+end_src
+
+#+RESULTS:
+: 8080
+
+*** Connect mic
+Start appropriate application on phone first.
+Use terminal for this one.
+Seems to cause issues when run with babel.
+Start with ~&~ at the end or just ~Ctrl+z~ (send to background and stop) followed by ~bg~ (restart most recently backgrounded task).
+Use ~btop~ or ~jobs~ to manage. 
+#+begin_src shell
+virtualmic http://localhost:8080/audio.opus
+#+end_src

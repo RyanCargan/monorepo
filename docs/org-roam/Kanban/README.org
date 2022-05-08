@@ -6,23 +6,23 @@
 :PROPERTIES:
 :CATEGORY: Elisp
 :END:
-| Done | Test (Active) | Dev (Done) | Dev (Track) | Dev (Active) | Analysis (Done) | Analysis (Active) |
-|------+---------------+------------+-------------+--------------+-----------------+-------------------|
-|      |               |            |             |              |                 | [[Export script]]     |
-|      |               |            |             |              |                 |                   |
+| Done          | Test (Active) | Dev (Done) | Dev (Track) | Dev (Active) | Analysis (Done) | Analysis (Active) |
+|---------------+---------------+------------+-------------+--------------+-----------------+-------------------|
+| [[Export script]] |               |            |             |              |                 |                   |
+|               |               |            |             |              |                 |                   |
 *** Backlog
-**** TODO Add references sections
-**** TODO Export script
+**** DONE Add references sections
+**** DONE Export script
 Add publishing script to init.el and a batch file for headless runs.
-**** TODO LaTeX SVG
+**** DONE LaTeX SVG
 Hook function to replace MathML with SVG on Org to HTML exports (assuming ready-made automated solutions don't exist).
 Turns out ~#+OPTIONS: tex:imagemagick~ or ~tex:dvisvgm~ should do the trick.
 Ready-made solution already existed.
-**** TODO Backup init.el
+**** DONE Backup init.el
 Add original init and literate init template to Git.
-**** TODO Literate port
+**** DONE Literate port
 Port eveything to literate config.
-**** TODO Tutorial notes
+**** DONE Tutorial notes
 Finish Org variable & DevOps tutorials.
 **** TODO Headless HTML export script with emacs-nox
 **** TODO Send time data to Org spreadsheets with completion times + task tags exportable to more portable CSVs later

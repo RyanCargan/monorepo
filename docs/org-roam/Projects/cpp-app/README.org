@@ -16,19 +16,57 @@ Tests mixed with code and removed automatically before build by preprocessor.
 :tangle-dir: ../../../../projects/cpp-app/src
 :END:
 *** main.cpp
-#+begin_src cpp :noweb yes :tangle (org-in-tangle-dir "main.cpp") :mkdirp yes :exports both
-  #include <iostream>
+#+begin_src cpp :noweb yes :tangle (org-in-tangle-dir "main.cpp") :mkdirp yes :exports both :results verbatim
+#include <iostream>
+#include <chrono>
+#include <ctime>
+#include <string>
 
-  using namespace std;
+using namespace std;
 
-   int main(int argc, char* argv[])
-   {
-     cout << "Hello world!\n";
-     return 0;
-   }
+string asString (const chrono::system_clock::time_point& tp)
+{
+  time_t t = chrono::system_clock::to_time_t(tp);
+  string ts = ctime(&t);
+  ts.resize(ts.size()-1);
+  return ts;
+}
+
+int main(int argc, char* argv[])
+{
+  cout << "You have entered " << argc << " arguments:" << "\n";
+  for (int i = 0; i < argc; ++i)
+    cout << argv[i] << "\n";
+  
+  chrono::system_clock::time_point time_epoch, time_now, time_min, time_max;
+  cout << "epoch: " << asString(time_epoch) << "\n";
+
+  time_now = chrono::system_clock::now();
+  cout << "now: " << asString(time_now) << "\n";
+
+  time_min = chrono::system_clock::time_point::min();
+  cout << "min: " << asString(time_min) << "\n";
+
+  time_max = chrono::system_clock::time_point::max();
+  cout << "max: " << asString(time_max) << "\n";
+
+  chrono::hours aDay(24);
+  chrono::minutes min = aDay;
+  
+  cout << min.count() << " minutes" << "\n";
+
+  cout << aDay.count() << " hours" << "\n";
+}
 #+end_src
 
 #+RESULTS:
-: Hello world!
+: You have entered 1 arguments:
+: /tmp/babel-SrqfJM/C-bin-cI09rJ
+: epoch: Thu Jan  1 05:30:00 1970
+: now: Mon May  2 20:59:39 2022
+: min: Tue Sep 21 05:32:08 1677
+: max: Sat Apr 12 05:17:16 2262
+: 1440 minutes
+: 24 hours
 
 Most compilers should add the return automatically.

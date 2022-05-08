@@ -1,7 +1,6 @@
 :PROPERTIES:
 :ID:       16812a77-d5ba-4b8c-9bf8-4bae6d3d520d
 :END:
-Consider using file vars like: ~# -*- org-use-tag-inheritance: nil; -*-~
 Information to prep for interview questions related to data structures and algorithms and SE in general.
 Use seprate elisp tangle vars for test code and regular code, set to either yes or no.
 Most testing frameworks and libs seem to block stdout by default and getting results to show up can be finicky.
@@ -284,8 +283,3 @@ ls
 #+RESULTS:
 | README.org  |
 | README.org~ |
-
-* Local variables :noexport:
-# local variables:
-# query: ?
-# end:
