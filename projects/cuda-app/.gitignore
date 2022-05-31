@@ -1,0 +1,6 @@
+bin/
+.ccls-cache/
+.vscode/
+pch/
+asm/
+log.json

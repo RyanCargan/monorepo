@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       88350847-e2c0-402c-9343-d1a38fe55c4e
+:END:
+Testing tips.
+* Testing Focus
+- Primary use cases or workflows of the API
+  Not the same as catching edge cases in QA.
+  Ensure that the code (at least) does the main thing it is intended for.
+- Coverage of multiple features (widest code coverage)
+  Function coverage.
+  Statement coverage.
+  Edge coverage.
+  Branch coverage.
+  Condition/Predicate coverage.
+- Most complex (i.e. highest risk) parts
+  The less well you understand something the more careful you need to be with it.
+- Poorly defined parts of the design
+  Tests can act as a specification.
+  Clear specification is especially important for features that aren't desribed well outside of code.
+- Features with highest performance or security concerns
+  Consider using a cheatsheet and checklist for common issues that can result in unintentional exposure of data or unintended control over the system or machine.
+  Watch out for issues like memory leaks and dangling pointers when using languages with no garbage collection.
+  Basic asymptotic analysis can help with choosing appropriate data structures and algorithms for certain levels of performance but fine-tuning needs profiling.
+- Problems that would cause the worst impact on clients
+  Any feature that manipulates user data directly, especially data from outside the system.
+  You need to make sure there's no chance of accidental data loss.
+  Backup functionality needs to be verified to work correctly.
+- Early focus on features that can be completed early in the development cycle
+  Changing requirements and other issues can lead to wasted effort for features further down the line.
+* Test Types
+** Return Value & Thrown Exception
+Direct response assertions for function calls.
+Don't duplicate implementation logic.
+** State Change
+Don't iterate.
+Test for 0, 1 or many (2).
+Use upper and lower bounds when testing for many (if applicable).
+Try to keep the cyclomatic complexity of your tests at 1 (i.e. no loops or conditions).
+** External Component Interaction
+Use stubs to always return a specific value every time.
+Use fakes to get different values depending on inputs.
+You can also use spies that record what happens as it's happening and then allow querying the same output later for making assertions (could act as a kind of input cache and partial mock).
+Be careful with mocks and other simulation methods.
+Avoid getting to a point where you're doing something like returning mocks from mocks.

@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       7ce328a5-fc1c-457c-9635-2956ae74e878
+:END:
+Important coding concepts to keep in mind.
+* Recurring Concepts
+** Abstraction
+Information hiding.
+** Encapsulation
+Access control.
+** Inheritance
+A particular type of code reuse.
+** Composition
+Another type of code reuse.
+** Polymorphism
+*** Types
+**** Ad Hoc
+Implementable with function/operator/method overloading.
+Compile-time/Static.
+**** Parametric
+Implementable with generic programming.
+Compile-time/Static.
+C++ achieves this with templates.
+**** Subtyping
+Implementable with subclassing/inheritance and method overriding.
+Implementation subclass overrides/replaces the one in the superclass via a method with the same name, parameters/signature, and return type as parent class method.
+Runtime/Dynamic.
+C++ achieves this with late binding/dynamic linkage (delay checking object's type until runtime).
+C++ has static dispatch as default and virtual methods are needed for dynamic dispatch.
+* SOLID
+** Single Responsibility
+** Open/Closed
+** Liskov Substitution
+** Dependency Inversion

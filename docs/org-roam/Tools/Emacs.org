@@ -16,6 +16,11 @@ Some of this may be specific to the current config.
 *** Cancel
 - ~C-g~
   (keyboard-quit)
+- ~C-/~
+  (undo)
+- ~C-?~
+  (undo-redo)
+  Redo.
 *** Get information
 - ~C-h o~
   (describe-symbol)

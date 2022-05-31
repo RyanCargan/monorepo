@@ -1,3 +1,35 @@
 *  monorepo
 Dumping ground for miscellaneous personal work and configuration info.
 Currently under construction.
+** Current Focus
+In order of current priority.
+*** Competive Coding (Interview Prep)
+**** [[./projects/cpp-app][C++ testbed application]]
+Collection of macros, templates, configurations and other boilerplate for quickly experimenting when prototyping (and optimizing) algorithms for tricky problems in coding challenges and interviews.
+Still has some usage of unit tests (with the C++ doctest library) to make code more modular and reliable.
+Heavy usage of STL to build familiarity with an important part of the C++ standard library.
+Creating 'node-based' data structures that can be composed into more complex forms ranging from linked lists to trees and graphs.
+Understanding tradeoffs in terms space and time complexity for different data structures and algorithms.
+Understanding manual memory management basics with some assitance from smart pointers and external tools such as Valgrind.
+Inspecting GAS (GNU Assembler) code output from the g++ compiler.
+*** Front-End Web Development
+**** [[./projects/deno-app][Deno blog]]
+Putting notes in one publicly accessible place.
+Used in conjunction with some third-party libraries that are in the process of being unit tested (to increase experience building test harnesses for legacy code i.e. code that isn't unit tested) and documented (to build experience writing technical documentation).
+**** [[./projects/react-app][React SPA]]
+Test WebAssembly integration in JavaScript for C/C++ with Ammo.js (physics engine with support for soft-body and cloth simulation) and SQLite.js (database) libraries.
+Build UIs with Sass and CUBE CSS methodology.
+Test integration of web forms with external office software like Google Sheets.
+*** Back-End Web Development
+**** [[./projects/go-app][Go WebSocket & REST API]]
+Testing integration with PostgreSQL, authentication & authorization systems as well as JS frontends.
+*** Low-Level Systems Programming
+**** [[./projects/cuda-app][CUDA parallel computing testbed]]
+Make use of the higher-level CUDA Thrust interface for creating an experimental rendering engine and toy AI engine.
+May make use of a mix of embedded s7 Scheme, pForth and Boost.Python at some point, to experiment with language interop for scripting and other use cases in an unusual setting.
+Might have some opportunities for inserting some Netwide Assembler (NASM) code as well.
+**** [[./projects/cpp-lib][C++ timer library]]
+Write portable code that works on native x86 (PC) & ARM (mobile) machines along with the V8 JavaScript engine (found in Node.js & all Chromium-based browsers) via WebAssembly using the ~<chrono>~ library.
+*** Native Android Development
+**** [[./projects/android-app][Android time management app]]
+Integrates aforementioned C++ timer library using JNI for Kotlin.

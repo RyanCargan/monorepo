@@ -11,13 +11,16 @@ adb devices -l
 #+end_src
 
 #+RESULTS:
-: List of devices attached
+| List           | of     | devices | attached               |               |            |                |
+| LGK53521c2f007 | device | usb:1-6 | product:ph2_global_com | model:LG_K535 | device:ph2 | transport_id:1 |
+|                |        |         |                        |               |            |                |
 *** Set port
 #+begin_src shell
 adb tcpip 5555
 #+end_src
 
 #+RESULTS:
+: restarting in TCP mode port: 5555
 
 *** Get info
 Get IP then disconnect.

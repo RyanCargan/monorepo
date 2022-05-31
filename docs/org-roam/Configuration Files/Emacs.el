@@ -20,6 +20,119 @@
 (use-package restart-emacs)
 ;(use-package auto-indent-mode) ; Still bugged? https://github.com/company-mode/company-mode/issues/1002
 
+(use-package move-text
+  :init (move-text-default-bindings))
+
+(use-package which-key
+  :init (which-key-mode))
+
+;(use-package tree-sitter)
+;(use-package tree-sitter-langs)
+
+;(use-package origami
+  ;:config
+  ;(define-prefix-command 'origami-mode-map)
+  ;(global-set-key (kbd "C-c f") 'origami-mode-map)
+  ;(global-origami-mode)
+  ;; :bind
+  ;; (:map origami-mode-map
+  ;;  ("o" . origami-open-node)
+  ;;  ("O" . origami-open-node-recursively)
+  ;;  ("c" . origami-close-node)
+  ;;  ("C" . origami-close-node-recursively)
+  ;;  ("a" . origami-toggle-node)
+  ;;  ("A" . origami-recursively-toggle-node)
+  ;;  ("R" . origami-open-all-nodes)
+  ;;  ("M" . origami-close-all-nodes)
+  ;;  ("v" . origami-show-only-node)
+  ;;  ("k" . origami-previous-fold)
+  ;;  ("j" . origami-forward-fold)
+  ;;  ("x" . origami-reset))
+  ;)
+
+(use-package company
+    ;:defer t
+    ;:init (global-company-mode)
+    :after lsp-mode
+    :hook (prog-mode . company-mode)
+    :bind (:map company-active-map
+	     ("<tab>" . company-complete-selection)
+	   :map lsp-mode-map
+	     ("<tab>" . company-indent-or-complete-common))
+    :config
+    (progn
+      (bind-key [remap completion-at-point] #'company-complete company-mode-map)
+      (setq company-tooltip-align-annotations t
+            company-show-numbers t)
+      (setq company-dabbrev-downcase nil))
+    (setq company-minimum-prefix-length 1)
+    (setq company-idle-delay 0.0)
+    :diminish company-mode)
+
+  (use-package company-quickhelp
+    :defer t
+    :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
+
+  (use-package company-nixos-options)
+
+  ;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
+(use-package nix-mode
+  :mode "\\.nix\\'"
+  :config
+  (add-hook 'nix-mode-hook
+	    '(lambda ()
+	       (set (make-local-variable 'company-backends)
+		    '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
+
+(use-package go-mode)
+
+(use-package js2-mode
+  :config
+  (add-hook 'js-mode-hook 'js2-minor-mode))
+
+;; (use-package tsi
+;;   :straight (tsi :type git :host github :repo "orzechowskid/tsi.el")
+;;   :after tree-sitter
+;;   :mode ("\\.ts\\'" "\\.tsx\\'" "\\.json\\'" "\\.css\\'" "\\.scss\\'")
+;;   :config
+;;   ;(require 'tsi-typescript)
+;;   ;(require 'tsi-json)
+;;   ;(require 'tsi-css)
+;;   (tsi-typescript-mode t)
+;;   (tsi-json-mode t)
+;;   (tsi-css-mode t))
+
+;; (use-package tsx-mode
+;;   :straight (tsx-mode :type git :host github :repo "orzechowskid/tsx-mode.el")
+;;   ;:after tsi
+;;   :mode ("\\.ts\\'" "\\.tsx\\'")
+;;   :hook (tsx-mode . lsp-deferred))
+
+(use-package typescript-mode
+  :mode ("\\.ts\\'" "\\.tsx\\'")
+  :hook (typescript-mode . lsp-deferred)
+  :config
+  (setq typescript-indent-level 2))
+;(use-package deno-fmt
+;  :hook (js2-mode typescript-mode))
+
+(use-package ccls
+  :straight
+  (ccls :host github :repo "ymarkovitch/emacs-ccls"
+	       ;:files ("*.el" "out")
+	       ;:fork (:host github :repo "ymarkovitch/emacs-ccls")
+	)
+  :config
+  (setq ccls-executable "ccls"))
+
+(use-package nasm-mode)
+
+(use-package kotlin-mode)
+
 (setq debug-on-error t)
 
 (use-package evil)
@@ -98,7 +211,7 @@
           treemacs-user-mode-line-format           nil
           treemacs-user-header-line-format         nil
           treemacs-wide-toggle-width               70
-          treemacs-width                           50
+          treemacs-width                           20
           treemacs-width-increment                 1
           treemacs-width-is-initially-locked       t
           treemacs-workspace-switch-cleanup        nil)
@@ -178,42 +291,9 @@
               ("C-p" . icomplete-backward-completions)
               ("C-v" . icomplete-vertical-toggle)))
 
-(use-package company
-  :defer t
-  :init (global-company-mode)
-  :config
-  (progn
-    (bind-key [remap completion-at-point] #'company-complete company-mode-map)
-    (setq company-tooltip-align-annotations t
-          company-show-numbers t)
-    (setq company-dabbrev-downcase nil))
-  :diminish company-mode)
-
-(use-package company-quickhelp
-  :defer t
-  :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
-
-(use-package company-nixos-options)
-
-;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
-
 (setq org-edit-src-content-indentation 0 ; Default 2, 0 redundant if preserve is t.
     org-src-tab-acts-natively t
     org-src-preserve-indentation t)
-
-(use-package nix-mode
-    :mode "\\.nix\\'"
-    :config
-    (add-hook 'nix-mode-hook
-	      '(lambda ()
-		 (set (make-local-variable 'company-backends)
-		      '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
-
-(use-package go-mode)
-(use-package js2-mode)
-(use-package typescript-mode)
-(use-package deno-fmt
-  :hook (js2-mode typescript-mode))
 
 (use-package ob-go)
 (use-package ob-deno)
@@ -284,7 +364,7 @@
           (pop-to-buffer th-shell-popup-buffer nil t)
           (comint-send-string nil (concat "cd " dir "\n" "clear" "\n"))))))
 
-  (global-set-key (kbd "<f12>") 'th-shell-popup)
+  (global-set-key (kbd "<f8>") 'th-shell-popup)
 
 (global-unset-key (kbd "C-z"))
 (setq inhibit-startup-message t)
