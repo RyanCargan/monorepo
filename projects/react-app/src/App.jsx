@@ -1,53 +1,27 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import { Link, Route } from "wouter"
+import useStore from "./store"
 import './scss/App.scss'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates!
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="http://localhost:3000"
-            target="_self"
-            rel="noopener noreferrer"
-          >
-            Redirect
-          </a>
-        </p>
-      </header>
-    </div>
+  const users = useStore(state => state.users)
+
+  return(
+    <>
+      <>
+      {/* <Users /> */}
+      </>
+
+      <Link href="/users/1">
+        <a className="link">Profile</a>
+      </Link>
+
+      <Route path="/about">About Us</Route>
+      <Route path="/users/:name">
+        {(params) => <div>Hello, {params.name}!</div>}
+      </Route>
+      {/* <Route path="/inbox" component={InboxPage} /> */}
+    </>
   )
 }
 

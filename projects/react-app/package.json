@@ -7,8 +7,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.0.20",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "three": "^0.141.0",
+    "wouter": "2.8.0-alpha.2",
+    "zustand": "4.0.0-rc.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
