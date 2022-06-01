@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import mdx from '@mdx-js/rollup'
 import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
 // import mdx from 'vite-plugin-mdx'
 
 const options = {
@@ -9,7 +10,9 @@ const options = {
 	remarkPlugins: [
 		remarkGfm
 	],
-	rehypePlugins: [],
+	rehypePlugins: [
+		rehypeHighlight
+	],
 	providerImportSource: '@mdx-js/react',
 }
 

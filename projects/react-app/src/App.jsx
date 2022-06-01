@@ -1,8 +1,9 @@
-import { Link, Route } from "wouter"
+import { Link, Route } from 'wouter'
 import { Canvas } from '@react-three/fiber'
 // import {MDXProvider} from '@mdx-js/react'
+import { Helmet } from 'react-helmet'
 
-import useStore from "./store"
+import useStore from './store'
 import Animation from './components/Animation'
 import Home from './mdx/Home.mdx'
 
@@ -14,6 +15,12 @@ const App = () => {
 
   return(
     <>
+
+      <Helmet>
+        <title>Ryan's Blog</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css" />
+      </Helmet>
+
       <>
       {/* <Users /> */}
       </>
