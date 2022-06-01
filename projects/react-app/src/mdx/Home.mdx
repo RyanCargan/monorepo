@@ -1,3 +1,7 @@
+import { Math } from './Math.jsx'
+
+export const pi = Number.parseFloat(Math.PI).toFixed(4)
+
 # GFM
 
 ## Autolink literals
@@ -26,6 +30,33 @@ A note[^1]
 
 ## Code
 
-```js
-console.log(1)
-```
+- JavaScript
+	```js
+	console.log(1)
+	```
+
+- C++
+	```cpp
+	int main() {
+		std::cout << "Hello world!" << "\n";
+		return 0;
+	}
+	```
+
+## Math
+
+$\sqrt{a^2 + b^2}$
+
+$\js{props.N}\pi = \js{props.N * 5}$
+
+$$
+\js{props.N}\pi = \js{props.N * pi}
+$$
+
+$$
+\pi = \js{Math.PI}
+$$
+
+$$
+\pi = \js{pi}
+$$

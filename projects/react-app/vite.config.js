@@ -1,17 +1,28 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+
 import mdx from '@mdx-js/rollup'
+
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
-// import mdx from 'vite-plugin-mdx'
+
+import remarkMath from 'remark-math'
+// import rehypeMathjax from 'rehype-mathjax'
+import rehypeKatex from 'rehype-katex'
+import remarkMdxEnhanced from 'remark-mdx-math-enhanced'
 
 const options = {
 	// See https://mdxjs.com/advanced/plugins
 	remarkPlugins: [
-		remarkGfm
+		remarkGfm,
+		remarkMath,
+		[remarkMdxEnhanced, { component: 'Math' }],
 	],
 	rehypePlugins: [
-		rehypeHighlight
+		rehypeHighlight,
+		// rehypeMathjax,
+		rehypeKatex,
+
 	],
 	providerImportSource: '@mdx-js/react',
 }

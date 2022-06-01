@@ -18,7 +18,10 @@ const App = () => {
 
       <Helmet>
         <title>Ryan's Blog</title>
+        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" />
+        {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous" /> */}
       </Helmet>
 
       <>
@@ -54,7 +57,7 @@ const App = () => {
       </Link>
       <br />
       {/* <MDXProvider components={components}> */}
-        <Home />
+        <Home  N={2.0} />
       {/* </MDXProvider> */}
 
       {/* <Route path="/about">About Us</Route>
