@@ -8,10 +8,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func Test() {
-	fmt.Println("Hello from your utils.")
-}
-
 // Establish connection using external driver.
 func DatabaseConnection(driver, conn string) (*sqlx.DB, error) {
 	db, err := sqlx.Connect(driver, conn)
@@ -36,6 +32,15 @@ func CreateTransaction(db *sqlx.DB) {
 	}
 
 	tx.Commit()
+}
+
+func CreateQuery(db *sqlx.DB) {
+	users := []User{}
+	db.Select(&users, "SELECT * FROM user ORDER BY first_name ASC")
+	for _, user := range users {
+		fmt.Printf("\n---\n%+v", user)
+	}
+	return
 }
 
 var Schema = `
