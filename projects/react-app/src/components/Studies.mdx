@@ -1,0 +1,53 @@
+# Study Notes
+
+## Programming Constructs
+
+You can boil down everything in a given program to these 3 concepts.
+
+### Sequence
+
+This refers to the program's control flow.
+
+Relatively straightforward in most programs until some sort of (very) complex conditional logic (selection), concurrency or parallelism gets involved (or you use something like GOTOs for some reason).
+
+### Selection
+
+This refers to conditional logic that determines which of multiple (usually mutually-exclusive) paths a program's execution will take.
+
+Can be boiled down to chaining boolean operators in some way (for the most part).
+
+Can be identified by the presence of if statements, if-else ladders, switch statements or guard clauses.
+
+### Iteration
+
+This refers to constructs that will _repeat_ for a certain number of steps or until a certain condition is met.
+
+Used when you need to search for, insert or delete something from a collection of data.
+
+Can typically be handled at a low level of abstraction until & unless you have to deal with (traverse) a structure that is either nested (e.g. nested/multidimensional arrays, nested dictionaries, maps, objects etc.) or recursive (trees & graphs) in nature.
+
+#### Raw/Low-Level Iteration Constructs
+
+##### Loops
+
+##### Recursive Callbacks
+
+#### High-Level Iteration Constructs
+
+##### Higher-Order Functions
+
+Higher-order functions (that return a function when executed, take a function as one or more of its arguments, or both) can help increase the level of abstraction in your code by making it more _declarative_.
+
+###### (The Almighty) Reduce (a.k.a. _Fold/Accumulate/Aggregate/Compress/Inject_)
+
+An important higher-order function that is built into the standard libraries of many programming languages including JavaScript, Python & C++ (including variant in the Thrust GPGPU API for CUDA & ROCm).
+
+It's important since many other higher-order functions such as map and filter can be defined (for the program or for an explanation) in terms of it.
+
+Can be implemented trivially (especially with generics) in languages that don't have it built in like Go.
+
+## Mutability/Immutability
+
+### Splice vs. Slice
+
+## Problem Types
