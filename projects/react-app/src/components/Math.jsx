@@ -1,4 +1,5 @@
 // Boilerplate from examples in goodproblems/remark-mdx-math-enhanced GitHub repository
+import React from 'react' // Needed to avoid "React is not defined" error after bundling
 import { useMemo } from 'react';
 import katex from 'katex';
 
