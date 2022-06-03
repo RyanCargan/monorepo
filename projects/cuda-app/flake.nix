@@ -21,20 +21,15 @@
 
                  packages = with pkgs; [
                     # Development Tools
-                    # llvmPackages_11.clang
-                    # cmake
-                    # cmakeCurses
                     doctest # Minimalist C++ unit testing library
                     cudaPackages_11_2.cudatoolkit # Nvidia GPUGPU library
                     cudaPackages_11_2.cudnn # Neural network library for CUDA
                  ];
 
                 shellHook = let
-                  cupath = pkgs.cudaPackages_11_2.cudatoolkit;
-                  cudnnpath = pkgs.cudaPackages_11_2.cudnn;
+                  # cupath = pkgs.cudaPackages_11_2.cudatoolkit;
+                  # cudnnpath = pkgs.cudaPackages_11_2.cudnn;
                 in ''
-                  export CUDA_PATH="${cupath}"
-                  export CUDNN_PATH="${cudnnpath}"
                 '';
                };
              });

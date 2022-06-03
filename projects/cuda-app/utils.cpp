@@ -3,7 +3,6 @@
 // #pragma message ( "Hello from your utils warning..." )
 
 using std::cout;
-using std::endl;
 
 namespace utils
 {

@@ -24,11 +24,10 @@ int main(int argc, char **argv)
     int client_stuff_return_code = 0;
 
     using std::cout;
-    using std::endl;
     using std::thread;
 
     unsigned int n = thread::hardware_concurrency();
-    cout << n << " concurrent threads are supported.\n";
+    cout << n << " concurrent \033[1;34mCPU\033[0m threads are supported.\n";
 
     utils_cuda::print_compute_capability();
 

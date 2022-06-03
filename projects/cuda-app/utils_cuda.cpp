@@ -1,7 +1,6 @@
 #include "utils_cuda.hpp"
 
 using std::cout;
-using std::endl;
 
 namespace utils_cuda
 {
@@ -9,18 +8,21 @@ namespace utils_cuda
     {
         int num_GPUs;
         cudaGetDeviceCount(&num_GPUs);
-        cout << "Found " << num_GPUs << " GPUs." << endl;
+        if (num_GPUs == 1)
+            cout << "Found " << num_GPUs << " \033[1;32mGPU\033[0m." << "\n";
+        else
+            cout << "Found " << num_GPUs << " \033[1;32mGPUs\033[0m." << "\n";
         cudaSetDevice(0);
         int device; 
         struct cudaDeviceProp devProp;
         cudaGetDevice(&device);
         cudaGetDeviceProperties(&devProp, device);
         cout
-            << "Current compute capability:"
+            << "Current \033[1;32mGPU\033[0m compute capability: "
             << devProp.major
             << "."
             << devProp.minor
-        << endl;
+        << "\n";
     }
 }
 namespace utils_cudnn
@@ -29,6 +31,6 @@ namespace utils_cudnn
 	{
 		cudnnHandle_t handle_;
 		cudnnCreate(&handle_);
-		cout << "Created cuDNN handle" << endl;
+		cout << "Created cuDNN handle" << "\n";
 	}
 }

@@ -13,7 +13,5 @@ in nixpkgs.mkShell {
     nixpkgs.cudaPackages_11_2.cudnn
   ];
   shellHook = ''
-  export CUDA_PATH="${nixpkgs.cudaPackages_11_2.cudatoolkit}"
-  export CUDNN_PATH="${nixpkgs.cudaPackages_11_2.cudnn}"
   '';
 }

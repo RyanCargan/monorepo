@@ -2,6 +2,8 @@
 
 ## To-Do
 
+- Create a toy rendering pipeline (with the Thrust API for CUDA) for future extension and experimentation using the parallel _pipeline (pipes & filters)_ pattern
+- Get a proof-of-concept still image render of an import made using the assimp library
 - Use _pure_ builds with flakes to avoid reliance on implicit dependencies for workspace to function (include everything explicitly inside flake.nix)
 
 ## Current Issues
@@ -10,7 +12,7 @@
 
 - Closing all files before closing the editor lets it re-open the most recent folder correctly without the above glitch
 
-- Getting a tarball for nix that matches the current system for a shell.nix file seems to be more involved than using `inherit` in a flake.nix file
+- Getting a tarball for nix that matches the current system for a shell.nix file seems to be more involved than just using `inherit` in a flake.nix file
 
 - Currently just using the system's flake.lock for reference for a manual copy & paste
 

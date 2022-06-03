@@ -2,6 +2,5 @@ bin/
 .ccls-cache/
 .vscode/*.log
 pch/
-asm/
 log.json
 .direnv/
