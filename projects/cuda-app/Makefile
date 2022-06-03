@@ -29,9 +29,9 @@ else
 	FLAGS 		+= -Og -g
 endif
 
-FILE_MAIN	= main
-FILE_LIB	= utils
-STATIC_LIB 	= utils_cuda
+MAIN	= main
+SHARED	= utils
+STATIC 	= utils_cuda
 
 .PHONY: default all
 
@@ -48,33 +48,33 @@ dir:
 	mkdir -p bin asm pch/bits
 
 .PHONY: app_object
-app_object: bin/$(FILE_MAIN).o
-bin/$(FILE_MAIN).o: $(FILE_MAIN).cpp
+app_object: bin/$(MAIN).o
+bin/$(MAIN).o: $(MAIN).cpp
 	$(CC) $(FLAGS) \
-	-o bin/$(FILE_MAIN).o -c $(FILE_MAIN).cpp
+	-o bin/$(MAIN).o -c $(MAIN).cpp
 
 .PHONY: shared_lib_object
-lib_object: bin/$(FILE_LIB).o
-bin/$(FILE_LIB).o: $(FILE_LIB).cpp
+lib_object: bin/$(SHARED).o
+bin/$(SHARED).o: $(SHARED).cpp
 	$(CC) $(FLAGS) \
-	-o bin/$(FILE_LIB).o -c -fPIC $(FILE_LIB).cpp
+	-o bin/$(SHARED).o -c -fPIC $(SHARED).cpp
 
 .PHONY: shared_lib
-shared_lib: bin/lib$(FILE_LIB).so
-bin/lib$(FILE_LIB).so: bin/$(FILE_LIB).o
-	$(CC) $(FLAGS) -shared -o bin/lib$(FILE_LIB).so bin/$(FILE_LIB).o
+shared_lib: bin/lib$(SHARED).so
+bin/lib$(SHARED).so: bin/$(SHARED).o
+	$(CC) $(FLAGS) -shared -o bin/lib$(SHARED).so bin/$(SHARED).o
 
 .PHONY: static_lib_object
-lib_object: bin/$(STATIC_LIB).o
-bin/$(STATIC_LIB).o: $(STATIC_LIB).cpp
+lib_object: bin/$(STATIC).o
+bin/$(STATIC).o: $(STATIC).cpp
 	$(NVCC) -ccbin $(CC) $(NVFLAGS) -dc \
-	-o bin/$(STATIC_LIB).o -c $(STATIC_LIB).cpp
+	-o bin/$(STATIC).o -c $(STATIC).cpp
 
 .PHONY: link
 link: main
-main: bin/$(FILE_MAIN).o bin/lib$(FILE_LIB).so bin/$(STATIC_LIB).o
+main: bin/$(MAIN).o bin/lib$(SHARED).so bin/$(STATIC).o
 	$(NVCC) -ccbin $(CC) $(NVFLAGS) \
-	-o bin/$(FILE_MAIN) bin/$(FILE_MAIN).o bin/$(STATIC_LIB).o \
+	-o bin/$(MAIN) bin/$(MAIN).o bin/$(STATIC).o \
 	-L$(UTILS_LIB) \
 	-lstdc++ -lm -lcudnn -lcublas -lcublasLt \
 	-lutils -Xlinker=-rpath,'$$ORIGIN'
