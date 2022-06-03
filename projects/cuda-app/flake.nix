@@ -1,5 +1,6 @@
 {
   description = "Flake for Nix-based C++ project setup.";
+  nixConfig.bash-prompt = "\[nix-develop\]$ ";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/22.05";
@@ -12,6 +13,7 @@
     "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin"
   ] (system: let pkgs = import nixpkgs {
                    inherit system;
+                   config = { allowUnfree = true; };
                  };
              in {
                devShell = pkgs.mkShell rec {
@@ -28,8 +30,8 @@
                  ];
 
                 shellHook = let
-                  cupath = ${cudaPackages_11_2.cudatoolkit};
-                  cudnnpath = ${cudaPackages_11_2.cudnn};
+                  cupath = pkgs.cudaPackages_11_2.cudatoolkit;
+                  cudnnpath = pkgs.cudaPackages_11_2.cudnn;
                 in ''
                   export CUDA_PATH="${cupath}"
                   export CUDNN_PATH="${cudnnpath}"
