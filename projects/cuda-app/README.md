@@ -1,60 +1,39 @@
-﻿# Tips for Solving Coding Problems
+﻿# Systems Programming Testbed
 
-## Problem Types
+## To-Do
 
-- **Search** Problems - Find something in the input that satisfies some property.
-- **Structuring** Problems - Transform the input to satisfy some property.
-- **Construction** Problems - Build something that satisfies some property.
-- **Optimization** Problems - Find the thing that best satisfies some property.
-- **Decision** Problems - Decide whether the input satisfies some property.
-- **Adaptive** Problems - Preserve some property over time.
+- Use _pure_ builds with flakes to avoid reliance on implicit dependencies for workspace to function (include everything explicitly inside flake.nix)
 
-## Algorithmic Paradigms
+## Current Issues
 
-### Brute Force
+- Either VS Code or the `ccls` language server has issues hooking up with direnv and nix-shell or nix develop when a .cpp file is open as the editor starts (opening files after opening the folder results in both warnings and ctrl + click working correctly)
 
-### Divide & Conquer
+- Closing all files before closing the editor lets it re-open the most recent folder correctly without the above glitch
 
-#### Dynamic Programming
+- Getting a tarball for nix that matches the current system for a shell.nix file seems to be more involved than using `inherit` in a flake.nix file
 
-Can be seen as a special case of divide & conquer.
+- Currently just using the system's flake.lock for reference for a manual copy & paste
 
-### Greedy Algorithms
+  ```json
+  "nixpkgs_2": {
+    "locked": {
+      "lastModified": 1653920503,
+      "narHash": "sha256-BBeCZwZImtjP3oYy4WogkQYy5OxNyfNciVSc1AfZgLQ=",
+      "owner": "NixOS",
+      "repo": "nixpkgs",
+      "rev": "a634c8f6c1fbf9b9730e01764999666f3436f10a",
+      "type": "github"
+    },
+    "original": {
+      "owner": "NixOS",
+      "ref": "nixos-22.05",
+      "repo": "nixpkgs",
+      "type": "github"
+    }
+  }
+  ```
 
-### Recursion
-
-### Backtracking
-
-## Parallel Programming
-
-### Workflow
-
-#### Find Concurrency
-
-##### Patterns
-
-#### Choose Algorithm Structure
-
-##### AS Patterns
-
-#### Choose Supporting Structures
-
-##### SS Patterns
-
-#### Choose Implementation Mechanisms
-
-##### IM Patterns
-
-### Concepts
-
-Tasks
-Execution Units
-Processing Elements
-Balance
-Synchronization
-Synchronicity
-Race Conditions
-Deadlocks
+- Leaving the shell.nix file in its un-updated state for now (too tedious to keep in sync with flake.nix manually)
 
 ## 3rd Party Libraries Used
 

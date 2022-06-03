@@ -3,11 +3,6 @@
 CC			= g++ 2>> log.json
 NVCC		= nvcc
 
-CUDA_INC	= ${CUDA_PATH}/include
-CUDA_LIB	= ${CUDA_PATH}/lib
-CUDNN_INC	= ${CUDNN_PATH}/include
-CUDNN_LIB	= ${CUDNN_PATH}/lib
-
 UTILS_LIB	= ./bin
 
 FLAGS		= -std=c++20 -foptimize-sibling-calls -fcoroutines \
@@ -43,13 +38,13 @@ dir:
 .PHONY: app_object
 app_object: bin/$(FILE_MAIN).o
 bin/$(FILE_MAIN).o: $(FILE_MAIN).cpp
-	$(CC) $(FLAGS) -I$(CUDA_INC) -I$(CUDNN_INC) \
+	$(CC) $(FLAGS) \
 	-o bin/$(FILE_MAIN).o -c $(FILE_MAIN).cpp
 
 .PHONY: lib_object
 lib_object: bin/$(FILE_LIB).o
 bin/$(FILE_LIB).o: $(FILE_LIB).cpp
-	$(CC) $(FLAGS) -I$(CUDA_INC) -I$(CUDNN_INC) \
+	$(CC) $(FLAGS) \
 	-o bin/$(FILE_LIB).o -c -fPIC $(FILE_LIB).cpp
 
 .PHONY: shared_lib
@@ -61,7 +56,6 @@ bin/lib$(FILE_LIB).so: bin/$(FILE_LIB).o
 lib_object: bin/$(STATIC_LIB).o
 bin/$(STATIC_LIB).o: $(STATIC_LIB).cpp
 	$(NVCC) -ccbin $(CC) $(NVFLAGS) -dc \
-	-I$(CUDA_INC) -I$(CUDNN_INC) \
 	-o bin/$(STATIC_LIB).o -c $(STATIC_LIB).cpp
 
 # .PHONY: static_lib
@@ -77,7 +71,6 @@ link: main
 main: bin/$(FILE_MAIN).o bin/lib$(FILE_LIB).so bin/$(STATIC_LIB).o
 	$(NVCC) -ccbin $(CC) $(NVFLAGS) \
 	-o bin/$(FILE_MAIN) bin/$(FILE_MAIN).o bin/$(STATIC_LIB).o \
-	-I$(CUDA_INC) -I$(CUDNN_INC) \
 	-L$(CUDA_LIB) -L$(CUDNN_LIB) \
 	-L$(UTILS_LIB) \
 	-lstdc++ -lm -lcudnn -lcublas -lcublasLt \

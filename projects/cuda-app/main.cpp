@@ -10,7 +10,7 @@
 
 // #warning "Hello from your main warning..."
 
-// Minimal example for applying sigmoid activation on a tensor with cuDNN.
+// TODO: Minimal example for applying sigmoid activation on a tensor with cuDNN.
 
 // using namespace std;
 
