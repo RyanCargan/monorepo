@@ -1,0 +1,39 @@
+{
+  description = "Flake for Nix-based C++ project setup.";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/22.05";
+
+    utils.url = "github:numtide/flake-utils";
+    utils.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, ... }@inputs: inputs.utils.lib.eachSystem [
+    "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin"
+  ] (system: let pkgs = import nixpkgs {
+                   inherit system;
+                 };
+             in {
+               devShell = pkgs.mkShell rec {
+                 name = "cuda-app-c++-project";
+
+                 packages = with pkgs; [
+                    # Development Tools
+                    # llvmPackages_11.clang
+                    # cmake
+                    # cmakeCurses
+                    doctest # Minimalist C++ unit testing library
+                    cudaPackages_11_2.cudatoolkit # Nvidia GPUGPU library
+                    cudaPackages_11_2.cudnn # Neural network library for CUDA
+                 ];
+
+                shellHook = let
+                  cupath = ${cudaPackages_11_2.cudatoolkit};
+                  cudnnpath = ${cudaPackages_11_2.cudnn};
+                in ''
+                  export CUDA_PATH="${cupath}"
+                  export CUDNN_PATH="${cudnnpath}"
+                '';
+               };
+             });
+}

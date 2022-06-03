@@ -32,8 +32,6 @@ int main(int argc, char **argv)
 
     utils_cuda::print_compute_capability();
 
-    cout << "TEST: " << utils::Arithmetic::Add(1, 1) << "\n";
-
     // Unit test boilerplate
     return (res + client_stuff_return_code);
 }
