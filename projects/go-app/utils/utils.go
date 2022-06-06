@@ -34,13 +34,13 @@ func CreateTransaction(db *sqlx.DB) {
 	tx.Commit()
 }
 
+// SQL query
 func CreateQuery(db *sqlx.DB) {
 	users := []User{}
 	db.Select(&users, "SELECT * FROM user ORDER BY first_name ASC")
 	for _, user := range users {
 		fmt.Printf("\n---\n%+v", user)
 	}
-	return
 }
 
 var Schema = `
@@ -61,3 +61,5 @@ type User struct {
 	Email     string `db:"email" csv:"email"`
 	Password  string `db:"password" csv:"password"`
 }
+
+// TODO: password hashing

@@ -2,7 +2,7 @@
 
 ## Programming Constructs
 
-You can boil down everything in a given program to these 3 concepts.
+You can boil down (almost?) everything in a given program to these 3 concepts.
 
 ### Sequence
 
@@ -30,7 +30,13 @@ Can typically be handled at a low level of abstraction until & unless you have t
 
 ##### Loops
 
+`for`, `while`, `do ... while`, etc.
+
 ##### Recursive Callbacks
+
+Can be used effectively in the form of tail recursion in languages that support tail-call optimization (e.g. C++, Scala & various Lisps).
+
+Can lead to performance issues & potentially stack overflows (depending on the number of calls needed among other things) if used in the form of head recursion (or in any form for languages without TCO).
 
 #### High-Level Iteration Constructs
 
@@ -38,16 +44,227 @@ Can typically be handled at a low level of abstraction until & unless you have t
 
 Higher-order functions (that return a function when executed, take a function as one or more of its arguments, or both) can help increase the level of abstraction in your code by making it more _declarative_.
 
-###### (The Almighty) Reduce (a.k.a. _Fold/Accumulate/Aggregate/Compress/Inject_)
+- (The Almighty) Reduce (a.k.a. _Fold/Accumulate/Aggregate/Compress/Inject_)
 
-An important higher-order function that is built into the standard libraries of many programming languages including JavaScript, Python & C++ (including variant in the Thrust GPGPU API for CUDA & ROCm).
+  - An important higher-order function that is built into the standard libraries of many programming languages including JavaScript, Python & C++ (including a variant in the Thrust GPGPU API for CUDA & ROCm).
 
-It's important since many other higher-order functions such as map and filter can be defined (for the program or for an explanation) in terms of it.
+  - It's important since many other higher-order functions such as map and filter can be defined (for the program or for an explanation) in terms of it.
 
-Can be implemented trivially (especially with generics) in languages that don't have it built in like Go.
+  - Can be implemented trivially (especially with generics) in languages that don't have it built in like Go.
 
 ## Mutability/Immutability
 
+Immutable data is data that cannot be modified after creation, only copied and destroyed.
+
+The concept becomes more important when dealing with concurrent systems and issues like race conditions.
+
 ### Splice vs. Slice
 
-## Problem Types
+JavaScript's `splice()` function returns removed items from an array while `slice()` returns selected array elements as a new array object (while avoiding changes to the original). 
+
+## Types of Design Problems
+
+## Types of Implementation Problems
+
+## Testing Solutions
+
+### Test Kits
+
+1. JavaScript & React - `jest` & `@testing-library/react`.
+
+1. Go - `testing` package from the standard library.
+
+1. C++ - `doctest`
+
+### Coverage Tools
+
+These give an easy automated way to see what percentage of your code base is covered by your tests. 
+
+1. JavaScript - ?
+
+1. Go - ?
+
+1. C++ - ?
+
+## Language Focus
+
+### General-Purpose Languages
+
+#### JavaScript
+
+Garbage-collected dynamically-typed language using familiar C-inspired syntax with a mix of object-based (i.e. _prototype-based_) and functional concepts (no out-of-the-box classical inheritance, though prototypal inheritance is one of its main features).
+
+Its `class` keyword is syntactic sugar over its constructor functions. Factory functions are preferred.
+
+Limited standard library.
+
+Lacks tail-call optimization in most implementations including the V8 engine which powers all Chromium-based browsers and Node.js.
+The only exception seems to be JavaScriptCore (JSC) which powers the Safari browser on macOS and all browsers on iOS.
+
+Higher-order functions like the built-in reduce preferred over raw recursive callbacks.
+
+##### JavaScript Quirks
+
+- Hoisting
+  
+  JS allows early functions to call functions declared later in a file.
+
+  This extends to variable and class declaration too, _but not initializations._
+
+#### Go
+
+Garbage-collected statically-typed language with a focus on minimalism.
+
+Suited for backend applications.
+
+Good standard library.
+
+Has good support for generics and type inference.
+
+Uses for-loops for everything (more or less).
+
+Rudimentary reduce function trivial to implement if needed.
+
+#### C++
+
+Language with manual memory management, static types and a focus on runtime performance.
+
+Powerful standard library.
+
+Has good support for generics (templates & concepts) and type inference (deduction).
+
+Built-in reduce function with parallelism support (among many others).
+
+### Special-Purpose Languages
+
+Used in conjunction with the aforementioned general languages.
+
+1. SQL
+
+	Personal experience mainly in the form of PostgreSQL and occasionally SQLite for prototyping and client-side data management in some apps.
+
+	Go's `sqlx` package provides a good inteface to it.
+
+	Postgres also comes with some handy extensions:
+
+	- PostGIS
+	  - Geo-spatial data management functionality
+
+	- TimescaleDB
+	  - Time-series data handling with 'hypertables'
+
+	- pgTAP
+	  - SQL unit tests
+
+	- Apache AGE
+	  - Graph data management utilities
+	  - Considered experimental as of the time of writing
+
+1. Sass (SCSS)
+
+	Superset of CSS (all valid CSS is valid SCSS) with added functionality to minimize boilerplate code.
+
+	Used for styling in JavaScript projects.
+
+1. CUDA (with Thrust API)
+	GPGPU framework for C, C++ & Fortran.
+
+### Unusual Languages
+
+For experimentation more than anything else.
+
+1. s7 Scheme
+
+1. pForth
+
+1. Netwide Assembly
+
+## Common Pain Points
+
+- State Management
+  - Solutions
+    - State management libraries (e.g. Zustand for JavaScript)
+
+- Concurrency & Parallelism
+  - Solutions
+    - Immutable data
+    - Resource access control (e.g. mutexes)
+
+- Regressions
+  - Solutions
+    - Unit tests
+
+## Programming Best Practices
+
+### Test-First Development
+
+The idea is to have tests act as a specification and encourage more modular code that is easier to isolate and reason about.
+
+### Object-Oriented Design
+
+A way to reduce complexity & mitigate risks in large software projects.
+
+_Object-oriented programming_ has a variety of different meanings and definitions floating around these days.
+
+Common themes in Alan Kay's original idea seem to be: decentralization, decoupling, loose coupling, modularity, and _risk mitigation_.
+
+#### Techniques to Reduce Cognitive Load
+
+- Abstraction
+  - **Hiding information to enable easier reasoning about algorithms and data structures**
+  - Allows for creating general abstract solutions that can be applied to many different types of concrete problems
+- Encapsulation
+  - **Controlling data access permissions with interfaces** (and making code self-documenting to some extent as a result)
+  - Managing access control and imposing constraints which act as a form of implicit documentation
+  - Done via closures & factory functions in JavaScript
+    - Closures are functions that remember their outer variables when invoked in another scope (i.e. they 'enclose'/'latch onto' their initial outer scope to recall it when referenced in new scopes?)
+
+    - Closures can help avoid redundant computation and preserve readability of code
+
+#### Techniques to Reduce Lines of Code
+
+These allow for different types of code reuse.
+
+- Inheritance
+  - **Data reuse**
+  - Allows for reuse and extension of _class definitions_, creating new classes from old ones
+  - Done via prototypal inheritance in JavaScript
+- Polymorphism
+  - **Behavior reuse**
+  -  Allows for reuse of _methods_ via their application to _similar kinds of objects_
+
+#### SOLID Principles
+
+- S - ?
+- O - ?
+- L - ?
+- I - Inversion of Control
+  - Delegate decision-making to 'higher' levels of the system
+  - _"Don't call us (higher-level components), we'll call you (lower-level components)."_
+  - Implementable via:
+    -  event loop, callbacks, or execute triggers
+    -  constructor injection
+    -  service locator pattern
+- D - ?
+
+#### Dependency Injection
+
+TODO.
+
+#### Domain-Driven Design
+
+TODO.
+
+### Data-Oriented Design
+
+#### Locality of Reference
+
+### Optimization
+
+#### Profile-Guided Optimization
+
+#### Branch Prediction Assistance
+
+- `likely` & `unlikely` GCC macros
+
+- Optimize impossible code branches away with something like C++23's `std::unreachable`

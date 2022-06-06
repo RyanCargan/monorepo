@@ -4,7 +4,7 @@
 // #include <cuda_runtime.h>
 // #include <cudnn.h>
 
-// #include "bits/stdc++.h"
+#include "bits/stdc++.h"
 #include "utils.hpp"
 #include "utils_cuda.hpp"
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     return (res + client_stuff_return_code);
 }
 
-namespace tests
+namespace test_main
 {
     TEST_CASE("testing the utils namespace") {
         CHECK(utils::Arithmetic::Add(1, 2) == 3);
@@ -46,4 +46,12 @@ namespace tests
     TEST_CASE("testing the data_utils namespace") {
         CHECK(utils::Arithmetic::Add(1, 2) == 3);
     }
+}
+
+namespace test_utils
+{
+}
+
+namespace test_utils_cuda
+{
 }

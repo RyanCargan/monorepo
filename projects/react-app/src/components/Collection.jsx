@@ -1,9 +1,9 @@
 import React from 'react'
-
-const Collection = (props) => {
+// implement a dynamically sorting array of objects with react-spring animations
+const Collection = (arrayOfObj) => {
 	return (
 		<>
-			Hello {props.var1}
+			Hello {arrayOfObj.var1}
 		</>		
 	)
 }

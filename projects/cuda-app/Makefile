@@ -1,5 +1,7 @@
-# Current dependencies: g++, nvcc
+# Required dependencies: g++, nvcc, ccache
+# Optional dependencies: nix, direnv
 
+CCC			= ccache g++ 2>> log.json
 CC			= g++ 2>> log.json
 NVCC		= nvcc
 
@@ -11,7 +13,9 @@ FLAGS		= -std=c++$(CPPSTD) -foptimize-sibling-calls -fcoroutines \
 				-Ipch \
 				-Wall -Wextra -Wpedantic \
 				-Werror=return-type \
-				-fdiagnostics-format=json
+				-fdiagnostics-color=always
+
+# [-fdiagnostics-format=json] when you need logs
 
 CARCH		= 64
 
@@ -50,19 +54,19 @@ dir:
 .PHONY: app_object
 app_object: bin/$(MAIN).o
 bin/$(MAIN).o: $(MAIN).cpp
-	$(CC) $(FLAGS) \
+	$(CCC) $(FLAGS) \
 	-o bin/$(MAIN).o -c $(MAIN).cpp
 
 .PHONY: shared_lib_object
 lib_object: bin/$(SHARED).o
 bin/$(SHARED).o: $(SHARED).cpp
-	$(CC) $(FLAGS) \
+	$(CCC) $(FLAGS) \
 	-o bin/$(SHARED).o -c -fPIC $(SHARED).cpp
 
 .PHONY: shared_lib
 shared_lib: bin/lib$(SHARED).so
 bin/lib$(SHARED).so: bin/$(SHARED).o
-	$(CC) $(FLAGS) -shared -o bin/lib$(SHARED).so bin/$(SHARED).o
+	$(CCC) $(FLAGS) -shared -o bin/lib$(SHARED).so bin/$(SHARED).o
 
 .PHONY: static_lib_object
 lib_object: bin/$(STATIC).o
@@ -96,5 +100,5 @@ run:
 	./bin/main
 
 stdc++.h.gch: stdc++.h
-	$(CC) -O2 -std=c++$(CPPSTD) -pedantic-errors \
+	$(CCC) -O2 -std=c++$(CPPSTD) -pedantic-errors \
 	-o pch/bits/stdc++.h.gch -c stdc++.h
