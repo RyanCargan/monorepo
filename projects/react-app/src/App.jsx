@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link, Route, Router } from 'wouter'
+import { Link, Route, useLocation, Router } from 'wouter'
 import { Helmet } from 'react-helmet-async'
 
 import useStore from './scripts/store'
@@ -9,6 +9,8 @@ import Collection from './components/Collection'
 import './styles/App.scss'
 import CanvasContainer from './components/CanvasContainer'
 // import { set } from 'immer/dist/internal'
+import { utils } from './scripts/utils'
+let [useEffectOnce] = [utils.useEffectOnce]
 
 const App = () => {
 
@@ -16,16 +18,18 @@ const App = () => {
 
   const [hidden, setHidden] = useState(true)
 
+  const [location, setLocation] = useLocation()
+
   //Effect is called everytime the values change
   useEffect(() => {
     console.log(hidden)
   },[hidden])
 
-  // useEffect(() => {
-  //   console.log('Location: ', window.location.pathname)
-  //   // Fire whatever function on path (site.com/path/subpath) changes
-  //   setHidden(!hidden);
-  // }, [window.location.pathname])
+  useEffectOnce(() => {
+    console.log(`Location detected:\n${location}`)
+    // Fire whatever function on path (site.com/path/subpath) changes
+    setHidden(!hidden)
+  }, [location])
 
   return(
     <div className='app'>
@@ -42,6 +46,11 @@ const App = () => {
           href='https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css'
         />
       </Helmet>
+
+    <div>
+      {`The current page is: ${location}`}
+      <a onClick={() => setLocation("/somewhere")}><br />Click to update</a>
+    </div>
 
       {hidden &&
       <div className='nav-menu'>
