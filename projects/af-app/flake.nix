@@ -17,20 +17,16 @@
                  };
              in {
                devShell = pkgs.mkShell rec {
-                 name = "cuda-app-c++-project";
+                 name = "af-app-c++-project";
 
                  packages = with pkgs; [
                     # Development Tools
                     doctest # Minimalist C++ unit testing library
-                    cudaPackages_11_2.cudatoolkit # Nvidia GPUGPU library
-                    cudaPackages_11_2.cudnn # Neural network library for CUDA
                     arrayfire
                     forge
                  ];
 
                 shellHook = let
-                  # cupath = pkgs.cudaPackages_11_2.cudatoolkit;
-                  # cudnnpath = pkgs.cudaPackages_11_2.cudnn;
                   af = pkgs.arrayfire;
                   forge = pkgs.forge;
                 in ''

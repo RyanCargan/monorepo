@@ -4,3 +4,4 @@ bin/
 pch/
 log.json
 .direnv/
+log-*.txt

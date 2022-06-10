@@ -1,47 +1,57 @@
 @use "./_utils.scss" as utils;
 
-// @include vars.bg-gradient (body, hot);
 
+// Built-in classes
 body {
 	background-color: red;
 	margin: 0;
 }
 
+// Base custom classes
 .app {
 	background-color: rgb(246, 210, 77);
 }
 .canvas {
 	background-color: white;
 }
-// .engine {
-// 	background-color: black;
-// }
+.panel-0 {
+	// transform: translate(calc(45vw + 20px), calc(10vh - 10px));
+	// position: absolute;
+	margin-top: 5%;
+	// transform: rotate(-45deg);
+	// transform: translate(89vw, 30vh);
+	// transform-origin: 250% 100%;
+	// z-index: -1;
+}
+
+
+// Navigation components 
 .nav-menu {
 	background-color: lightgray;
 }
+.subsite-nav-menu {
+	background-color: lightgreen;
+}
+
+// Filling buttons
 .block {
 	width: 100%;
-	// height: 100%;
 }
 .block-part {
 	width: 10%;
-	// height: 100%;
 }
-// .canvas-ui-main {
-// 	transform: translate(200px,100px);
-// }
+
+// Canvas HTML elements
 .canvas-ui {
-	background-color: greenyellow;
+	background-color: brown;
 }
 .canvas-ui-menu {
 	background-color: red;
 	text-align: center;
-	// transform: translate(10vw, 10vh);
-	// transform: translateX(100%) translateX(-450px);
-	// transform: translateX(100%) translateX(100%);
-	transform: translate(calc(50vw - 50px), calc(50vh - 35px));
+	transform: translate(calc(50vw - 50px), calc(-45vh));
 }
 
+// Rendering engine
 #engine-container {
 	height: 100vh !important;
 	background-color: black;

@@ -11,7 +11,7 @@ const CanvasContainer = () => {
 				<br />
 				<button className='block-part'>Minimize</button>
 			</div> */}
-			<Canvas id='engine-container'>
+			<Canvas id='engine-container' shadows>
 				{/* <group position-z={0} position-x={0}>     
 					<Html
 						as='div'
@@ -27,19 +27,20 @@ const CanvasContainer = () => {
 
 				<Html
 					as='div'
-					wrapperClass='canvas-ui-main'
+					wrapperClass='canvas-ui'
 					center={true}
 				>
-				<div className='canvas-ui-menu'>
-					{(1 > 0) &&
-					<button className='block'>
-						Maximize
-					</button>}
-					{(1 > 0) && 
-					<button className='block'>
-						Minimize
-					</button>}
-				</div>
+					{/* <>???</> */}
+					<div className='canvas-ui-menu'>
+						{(1 > 0) &&
+						<button className='block'>
+							Maximize
+						</button>}
+						{(1 > 0) && 
+						<button className='block'>
+							Minimize
+						</button>}
+					</div>
 				</Html>
 
 				<Suspense fallback={null}>
