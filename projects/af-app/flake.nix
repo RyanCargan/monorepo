@@ -24,14 +24,22 @@
                     doctest # Minimalist C++ unit testing library
                     arrayfire
                     forge
+                    mesa
+                    cudaPackages_11_2.cudatoolkit # Nvidia GPUGPU library
+                    cudaPackages_11_2.cudnn # Neural network library for CUDA
                  ];
 
                 shellHook = let
                   af = pkgs.arrayfire;
                   forge = pkgs.forge;
+                  mesa = pkgs.mesa.dev;
+                  cu = pkgs.cudaPackages_11_2.cudatoolkit;
                 in ''
-                  export ARRAY_FIRE="${af}"
+                  export AF_PATH="${af}/lib"
+                  export CUDA_PATH="${cu}"
                   export FORGE="${forge}"
+                  export OPENGL_gl_LIBRARY="${mesa}"
+                  export ArrayFire_DIR="${af}/share/ArrayFire/cmake"
                 '';
                };
              });

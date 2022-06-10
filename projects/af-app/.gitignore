@@ -1,0 +1,6 @@
+.direnv/
+build/
+.ccls-cache/
+log.json
+.vscode/
+bin/
