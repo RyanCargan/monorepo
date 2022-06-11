@@ -2,14 +2,31 @@
 
 
 // Built-in classes
+// * { 
+    // margin: 0; 
+    // padding: 0; 
+    // box-sizing: border-box; 
+// }
+
+html {
+    min-height: 100%;
+}
+
 body {
-	background-color: red;
-	margin: 0;
+	// background-image: repeating-linear-gradient(45deg, blue, red 33.3%);
+	// background: rgb(2,0,36);
+	// height: 100%;
+	// margin: 0;
+	// padding: 0;
+	// background-repeat: no-repeat;
+    // background-attachment: fixed;
+	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+	// margin: 0;
 }
 
 // Base custom classes
 .app {
-	background-color: rgb(246, 210, 77);
+	background: radial-gradient(circle, rgba(234,236,242,1) 0%, rgba(236,172,8,1) 94%);
 }
 .canvas {
 	background-color: white;
@@ -19,7 +36,7 @@ body {
 	// position: absolute;
 	// margin-top: 50%;
 	// transform: scaleX(-1);
-	transform: translate(0vw, 95vh);
+	transform: translate(1vw, 95vh);
 	// max-height: 100%;
 	// overflow: hidden;
 	// margin-bottom: 125px;
@@ -33,10 +50,12 @@ body {
 
 // Navigation components 
 .nav-menu {
-	background-color: lightgray;
+	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(209,215,219,1) 94%);
+	// padding: 0;
+	// margin: 0;
 }
 .subsite-nav-menu {
-	background-color: lightgreen;
+	background: radial-gradient(circle, rgba(234,236,242,1) 0%, rgba(58,236,8,1) 94%);
 }
 
 // Filling buttons

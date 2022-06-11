@@ -19,6 +19,7 @@
     "gsap": "^3.10.4",
     "immer": "^9.0.14",
     "katex": "^0.15.6",
+    "localbase": "^0.7.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet-async": "^1.3.0",
