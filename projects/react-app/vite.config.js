@@ -1,8 +1,4 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-// import { dependencies } from './package.json'
-// import * as jsonData from './package.json'
-// const jsonData = require('./package.json')
-// const dependencies = jsonData.dependencies
 import react from '@vitejs/plugin-react'
 
 import mdx from '@mdx-js/rollup'
@@ -14,17 +10,9 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkMdxEnhanced from 'remark-mdx-math-enhanced'
 
-// import fauxRemarkEmbedder from '@remark-embedder/core'
-// import fauxOembedTransformer from '@remark-embedder/transformer-oembed'
-// const remarkEmbedder = fauxRemarkEmbedder.default
-// const oembedTransformer = fauxOembedTransformer.default
+// import path from 'path'
 
 import fs from 'fs'
-// let jsonData = {}
-// fs.readFile('package.json', 'utf-8', (err, data) => {
-//   if (err) throw err
-//   jsonData = JSON.parse(data)
-// })
 const jsonData = JSON.parse(fs.readFileSync('package.json', 'utf-8'))
 const dependencies = jsonData.dependencies
 
@@ -42,7 +30,6 @@ const options = {
 		remarkGfm,
 		remarkMath,
 		[remarkMdxEnhanced, { component: 'Math' }],
-		// [remarkEmbedder, {transformers: [oembedTransformer]}],
 	],
 	rehypePlugins: [
 		rehypeHighlight,
@@ -53,6 +40,12 @@ const options = {
 }
 
 export default defineConfig({
+	// resolve: {
+	// 	alias: {
+	// 		// Forward all three.js imports to exports file
+	// 		three$ : path.resolve('./three-exports.js')
+	// 	},
+	// },
 	build: {
 		sourcemap: false,
 		rollupOptions: {
