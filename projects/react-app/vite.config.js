@@ -10,8 +10,6 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkMdxEnhanced from 'remark-mdx-math-enhanced'
 
-// import path from 'path'
-
 import fs from 'fs'
 const jsonData = JSON.parse(fs.readFileSync('package.json', 'utf-8'))
 const dependencies = jsonData.dependencies
@@ -40,12 +38,6 @@ const options = {
 }
 
 export default defineConfig({
-	// resolve: {
-	// 	alias: {
-	// 		// Forward all three.js imports to exports file
-	// 		three$ : path.resolve('./three-exports.js')
-	// 	},
-	// },
 	build: {
 		sourcemap: false,
 		rollupOptions: {
