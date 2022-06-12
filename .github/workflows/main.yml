@@ -1,0 +1,15 @@
+name: Automated Pull Setup
+on: [push]
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call Server
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://codinghermit.net/ci'
+        method: 'POST'
+        # username: ${{ secrets.AWX_USER }}
+        # password: ${{ secrets.AWX_PASSWORD }}
+        customHeaders: '{"Content-Type": "text/plain"}'
+        data: ${{ secrets.TOKEN }}

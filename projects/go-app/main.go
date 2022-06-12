@@ -1,24 +1,35 @@
 package main
 
+// import "C"
 import (
 	"fmt"
-
-	"webapi/utils"
+	"net/http"
 )
 
-func main() {
-	// db, err := utils.DatabaseConnection("sqlite3", "file::memory:?cache=shared")
-	db, _ := utils.DatabaseConnection("sqlite3", "bin/sqlite.db")
+func root(w http.ResponseWriter, req *http.Request) {
 
-	db.MustExec(utils.Schema)
-
-	utils.CreateTransaction(db)
-
-	utils.CreateQuery(db)
-
-	fmt.Println(Hello())
+	fmt.Fprintf(w, "Hello from the server!\n")
 }
 
-func Hello() string {
-	return "Hello world!"
+func hello(w http.ResponseWriter, req *http.Request) {
+
+	fmt.Fprintf(w, "Hello.\n")
+}
+
+func headers(w http.ResponseWriter, req *http.Request) {
+
+	for name, headers := range req.Header {
+		for _, h := range headers {
+			fmt.Fprintf(w, "%v: %v\n", name, h)
+		}
+	}
+}
+
+func main() {
+
+	http.HandleFunc("/", root)
+	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/headers", headers)
+
+	http.ListenAndServe(":4000", nil)
 }
