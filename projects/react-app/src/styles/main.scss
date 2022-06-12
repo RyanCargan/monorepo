@@ -2,11 +2,14 @@
 
 
 // Built-in classes
-// * { 
-    // margin: 0; 
+* { 
+    margin: 2px 1px 2px 1px;
     // padding: 0; 
-    // box-sizing: border-box; 
-// }
+    // box-sizing: border-box;
+	padding: 2px 1px 2px 1px; // padding: top right bottom left 
+	border-radius:7px;
+	font-family: "Verdana", "Arial", sans-serif;
+}
 
 html {
     min-height: 100%;
@@ -36,7 +39,7 @@ body {
 	// position: absolute;
 	// margin-top: 50%;
 	// transform: scaleX(-1);
-	transform: translate(1vw, 95vh);
+	transform: translate(1vw, 94vh);
 	// max-height: 100%;
 	// overflow: hidden;
 	// margin-bottom: 125px;
@@ -51,7 +54,7 @@ body {
 // Navigation components 
 .nav-menu {
 	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(209,215,219,1) 94%);
-	// padding: 0;
+	// padding: 25px 50px 75px 100px; // padding: top right bottom left
 	// margin: 0;
 }
 .subsite-nav-menu {
@@ -67,17 +70,35 @@ body {
 }
 
 // Canvas HTML elements
-.canvas-ui {
-	background-color: brown;
-}
+// .canvas-component {
+	// width: 100%;
+    // background-color: red;
+    // display: block;
+	// display: flex;
+	// margin: 0 0 0 0 !important;
+	// padding: 0 0 0 0 !important;
+// }
+// .canvas-ui {
+	// text-align: center;
+	// background-color: brown;
+	// padding-right: 10px;
+// }
 .canvas-ui-menu {
 	background-color: red;
+	// margin: 0 auto;
 	text-align: center;
+	padding-right: 15px;
 	transform: translate(calc(50vw - 50px), calc(-45vh));
 }
+// .engine-container {
+
+// }
 
 // Rendering engine
 #engine-container {
+	// width: 90vw !important;
 	height: 100vh !important;
 	background-color: black;
+	// padding-right: 2px 1px 2px 1px;
+	// margin-right: 2px 1px 2px 1px;
 }

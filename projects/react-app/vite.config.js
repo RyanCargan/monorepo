@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import react from '@vitejs/plugin-react'
 
 import mdx from '@mdx-js/rollup'
@@ -35,13 +35,34 @@ export default defineConfig({
 		react({
 			jsxRuntime: 'classic',
 		}),
-		mdx(options)
+		mdx(options),
+		splitVendorChunkPlugin(),
+		// {
+		// 	name: "configure-preview-response-headers",
+		// 	configurePreviewServer: (server) => {
+		// 		server.middlewares.use((_req, res, next) => {
+		// 			res.setHeader("Cross-Origin-Embedder-Policy", "require-corp")
+
+		// 			res.setHeader("Cross-Origin-Opener-Policy", "same-origin")
+
+		// 			next()
+		// 		})
+		// 	}
+		// }
 	],
 
 	server: {
-		port: 3000
+		port: 3000,
+		headers: {
+			'Cross-Origin-Embedder-Policy': 'require-corp',
+			'Cross-Origin-Opener-Policy': 'same-origin'
+		  }
 	},
 	preview: {
-		port: 4000
+		port: 4000,
+		// headers: {
+		// 	'Cross-Origin-Embedder-Policy': 'require-corp',
+		// 	'Cross-Origin-Opener-Policy': 'same-origin'
+		// }
 	},
 })

@@ -13,7 +13,7 @@ const NavMenu = (props) => {
 	//Effect is called everytime the values change
 	useEffectOnce(() => {
 	  console.log(isMain)
-	},[isMain])
+	}, [isMain])
   
 	useEffectOnce(() => {
 	  console.log(`Location detected:\n${location}`)
