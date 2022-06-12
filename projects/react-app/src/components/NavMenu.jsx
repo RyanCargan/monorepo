@@ -4,6 +4,10 @@ import useStore from '../scripts/store'
 import { utils } from '../scripts/utils'
 let [useEffectOnce] = [utils.useEffectOnce]
 
+// const checkSessionState = () => {
+// 	// Request session token
+// }
+
 const NavMenu = (props) => {
 	const users = useStore(state => state.users)
 	const [isMain, setIsMain] = useState(props.isMain ? props.isMain : true)
@@ -24,6 +28,13 @@ const NavMenu = (props) => {
 		setIsMain(!isMain)
 	  }
 	}, [location])
+
+	// useEffectOnce(() => {
+	// 	// Redirect to login if session request fails
+	// 	if (checkSessionState() === false) {
+	// 	  setLocation('/login')
+	// 	}
+	// }, [])
 
 	return (
 		<div>
