@@ -23,13 +23,13 @@ body {
 	// padding: 0;
 	// background-repeat: no-repeat;
     // background-attachment: fixed;
-	background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(209,215,219,1) 94%);
 	// margin: 0;
 }
 
 // Base custom classes
 .app {
-	background: radial-gradient(circle, rgba(234,236,242,1) 0%, rgba(236,172,8,1) 94%);
+	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(87,135,255,1) 0%, rgba(247,247,247,1) 94%);
 }
 .canvas {
 	background-color: white;
@@ -58,7 +58,7 @@ body {
 	// margin: 0;
 }
 .subsite-nav-menu {
-	background: radial-gradient(circle, rgba(234,236,242,1) 0%, rgba(58,236,8,1) 94%);
+	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(66,89,244,1) 0%, rgba(247,247,247,1) 94%);
 }
 
 // Filling buttons
@@ -102,3 +102,22 @@ body {
 	// padding-right: 2px 1px 2px 1px;
 	// margin-right: 2px 1px 2px 1px;
 }
+
+// MDX components
+.mdx-paragraph {
+	color: rgb(0, 0, 0);
+	margin-left: 1em;
+}
+.mdx-section {
+	color: rgb(165, 178, 226);
+	margin-left: 1em;
+}
+.mdx-ulist {
+	// color: rgb(165, 178, 226);
+	margin-left: 1%;
+	// padding-top: 0;
+}
+// .mdx-footer {
+// 	color: red;
+// 	margin-bottom: 2em;
+// }
