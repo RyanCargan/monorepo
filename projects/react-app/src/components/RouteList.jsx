@@ -13,7 +13,7 @@ const RouteList = () => {
 		<div>
 			<Route path='/'>
 				<NavMenu isMain={true}/>
-				<>Home</>
+				<>Home (Placeholder)</>
 			</Route>
 			<Route path='/blog'>
 				<NavMenu/>
