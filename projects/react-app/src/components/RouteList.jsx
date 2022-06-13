@@ -28,17 +28,20 @@ const RouteList = () => {
 			</Route>
 			<Route path='/portfolio'>
 				<NavMenu/>
-				<div>
-				???
-				</div>
+				<>
+					<>Portfolio list. MDX note goes here...</>
+				</>
 			</Route>
 			<Route path='/portfolio/:name'>
 				<NavMenu/>
-				{(params) => <div>Hello, {params.name}!</div>}
+				{/* react_devtools_backend.js:4026 Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it. */}
+				{/* {(params) => <div>Hello, {params.name}!</div>} */}
 			</Route>
 			<Route path='/subsite'>
 				<NavMenu/>
-				{/* <>Subsites</> */}
+				<>
+					<>Current subsites. MDX note goes here...</>
+				</>
 			</Route>
 			<Route path='/subsite/bitrot'>
 				<NavMenu/>
@@ -46,9 +49,9 @@ const RouteList = () => {
 					<CanvasContainer />
 				</Suspense>
 			</Route>
-			{/* <Route path='/:rest*'>
+			<Route path='/404'>
 				<>404, Not Found!</>
-			</Route> */}
+			</Route>
 		{/* </Switch> */}
 	</div>
 	)

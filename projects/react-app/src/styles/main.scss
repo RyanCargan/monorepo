@@ -12,7 +12,7 @@
 }
 
 html {
-    min-height: 100%;
+    min-height: 99%; // 100% gives a useless vertical scrollbar
 }
 
 body {

@@ -30,6 +30,7 @@ const NavMenu = (props) => {
 	  // Fire functions on path (site.com/path/subpath) changes
 		if (location === '/') {
 			setIsMain(isMain)
+			console.log('Main')
 		} else if (location === '/blog') {
 			setIsMain(!isMain)
 			setIsBlog(true)
@@ -37,6 +38,7 @@ const NavMenu = (props) => {
 			setIsMain(!isMain)
 			setIsPortfolio(true)
 		} else if (location === '/subsite') {
+			console.log('Subsite')
 			setIsMain(!isMain)
 			setIsSubsite(true)
 		} else if (location === '/subsite/bitrot') {
@@ -44,6 +46,10 @@ const NavMenu = (props) => {
 			setIsSubsite(true)
 		} else {
 			setIsUnknown(true)
+			console.log('Unknown')
+			// alert('404')
+			// setLocation('/404')
+			// window.location.pathname == '/404'
 		}
 	}, [location])
 
@@ -61,9 +67,7 @@ const NavMenu = (props) => {
 			<a onClick={() => setLocation("/somewhere")}><br />Click to update</button>
 			</div> */}
 		{/* {isUnknown &&
-			<>
-				404!
-			</>} */}
+			<>404!</>} */}
 
 		{isMain &&
 			<div className='nav-menu'>
@@ -97,15 +101,31 @@ const NavMenu = (props) => {
 				</button>
 				<br />
 				</Link>
-				{isSubsite &&
-				<>
-					<br /><>Subsites</><br /><br />
-					<Link href='/subsite/bitrot'>
-					<button className='block'>Bitrot</button>
-					</Link>
-					<br />
-				</>}
-			</div>}
+		{isBlog &&
+			<>
+				<br /><>Blog</><br /><br />
+				<Link href='/subsite/bitrot'>
+				<button className='block'>PLACEHOLDER</button>
+				</Link>
+				<br />
+			</>}
+		{isPortfolio &&
+			<>
+				<br /><>Portfolios</><br /><br />
+				<Link href='/subsite/bitrot'>
+				<button className='block'>PLACEHOLDER</button>
+				</Link>
+				<br />
+			</>}
+		{isSubsite &&
+			<>
+				<br /><>Subsites</><br /><br />
+				<Link href='/subsite/bitrot'>
+				<button className='block'>Bitrot</button>
+				</Link>
+				<br />
+			</>}
+		</div>}
 
 		</div>
 	)
