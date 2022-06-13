@@ -1,23 +1,26 @@
-import React from 'react'
-import { Route } from 'wouter'
+import React, { Suspense } from 'react'
+import { Switch, Route } from 'wouter'
 
 // Components
 import NavMenu from './NavMenu'
 import Collection from './Collection'
-import CanvasContainer from './CanvasContainer'
+const CanvasContainer = React.lazy(() =>
+	import('./CanvasContainer'))
 // MDX Components
+import Demo from './Demo.mdx'
 import Landing from './Landing.mdx'
 
 const RouteList = () => {
 	return (
-		<div>
+	<div>
+		{/* <Switch> */}
 			<Route path='/'>
-				<NavMenu isMain={true}/>
-				<>Home (Placeholder)</>
+				<NavMenu/>
+				<Landing/>
 			</Route>
 			<Route path='/blog'>
 				<NavMenu/>
-				<Landing  N={2.0} />
+				<Demo  N={2.0} />
 			</Route>
 			<Route path='/collection'>
 				<NavMenu/>
@@ -35,13 +38,19 @@ const RouteList = () => {
 			</Route>
 			<Route path='/subsite'>
 				<NavMenu/>
-				<>Subsites</>
+				{/* <>Subsites</> */}
 			</Route>
 			<Route path='/subsite/bitrot'>
 				<NavMenu/>
-				<CanvasContainer />
+				<Suspense fallback={<div>Loading canvas...</div>}>
+					<CanvasContainer />
+				</Suspense>
 			</Route>
-		</div>
+			{/* <Route path='/:rest*'>
+				<>404, Not Found!</>
+			</Route> */}
+		{/* </Switch> */}
+	</div>
 	)
 }
 
