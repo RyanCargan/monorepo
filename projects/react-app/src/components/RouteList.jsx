@@ -32,11 +32,9 @@ const RouteList = () => {
 					<>Portfolio list. MDX note goes here...</>
 				</>
 			</Route>
-			<Route path='/portfolio/:name'>
+			{/* <Route path='/portfolio/:name'>
 				<NavMenu/>
-				{/* react_devtools_backend.js:4026 Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it. */}
-				{/* {(params) => <div>Hello, {params.name}!</div>} */}
-			</Route>
+			</Route> */}
 			<Route path='/subsite'>
 				<NavMenu/>
 				<>
@@ -45,14 +43,35 @@ const RouteList = () => {
 			</Route>
 			<Route path='/subsite/bitrot'>
 				<NavMenu/>
-				<Suspense fallback={<div>Loading canvas...</div>}>
+				<Suspense fallback={<>Loading canvas...</>}>
 					<CanvasContainer />
 				</Suspense>
 			</Route>
-			<Route path='/404'>
-				<>404, Not Found!</>
+			<Route path='/subsite/geojot'>
+				<NavMenu/>
+				<Suspense fallback={<>Loading site...</>}>
+					<>Under construction...</>
+				</Suspense>
 			</Route>
+			<Route path='/subsite/speakeasy'>
+				<NavMenu/>
+				<Suspense fallback={<>Loading site...</>}>
+					<>Under construction...</>
+				</Suspense>
+			</Route>
+			<Route path='/subsite/timehack'>
+				<NavMenu/>
+				<Suspense fallback={<>Loading site...</>}>
+					<>Under construction...</>
+				</Suspense>
+			</Route>
+			{/* <Route path='/404'>
+				<>404, Not Found!</>
+			</Route> */}
 		{/* </Switch> */}
+		{/* <Switch>
+			<Route>{false && '404, Not Found!'}</Route>
+		</Switch>	 */}
 	</div>
 	)
 }

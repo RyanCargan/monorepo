@@ -25,32 +25,41 @@ const NavMenu = (props) => {
 	  console.log(isMain)
 	}, [isMain])
   
+	/*
+	Move this useEffect's conditions to a separate component and replace useState with Zustand's global useStore.
+	That should enable 404s without relying on wouter's switch.
+	*/
 	useEffectOnce(() => {
 	  	console.log(`Location detected:\n${location}`)
 	  // Fire functions on path (site.com/path/subpath) changes
 		if (location === '/') {
 			setIsMain(isMain)
 			console.log('Main')
-		} else if (location === '/blog') {
+		} else if (location.startsWith('/blog')) {
+			console.log('Blog')
 			setIsMain(!isMain)
 			setIsBlog(true)
-		} else if (location === '/portfolio') {
+		} else if (location.startsWith('/portfolio')) {
+			console.log('Portfolio')
 			setIsMain(!isMain)
 			setIsPortfolio(true)
-		} else if (location === '/subsite') {
+		} else if (location.startsWith('/subsite')) {
 			console.log('Subsite')
 			setIsMain(!isMain)
 			setIsSubsite(true)
-		} else if (location === '/subsite/bitrot') {
-			setIsMain(!isMain)
-			setIsSubsite(true)
-		} else {
-			setIsUnknown(true)
-			console.log('Unknown')
-			// alert('404')
-			// setLocation('/404')
-			// window.location.pathname == '/404'
 		}
+		// else if (location === '/subsite/bitrot') {
+		// 	console.log('Bitrot')
+		// 	setIsMain(!isMain)
+		// 	setIsSubsite(true)
+		// }
+		// } else {
+		// 	setIsUnknown(true) // Never triggers since NavMenu won't load from App.jsx on unknown URLs
+		// 	console.log('Unknown')
+		// 	// alert('404')
+		// 	// setLocation('/404')
+		// 	// window.location.pathname == '/404'
+		// }
 	}, [location])
 
 	// useEffectOnce(() => {
@@ -73,7 +82,7 @@ const NavMenu = (props) => {
 			<div className='nav-menu'>
 				<Link href='/blog'>
 				<button className='block'>
-					Blog
+					Blogs
 				</button>
 				</Link>
 				<br />
@@ -103,17 +112,17 @@ const NavMenu = (props) => {
 				</Link>
 		{isBlog &&
 			<>
-				<br /><>Blog</><br /><br />
-				<Link href='/subsite/bitrot'>
-				<button className='block'>PLACEHOLDER</button>
+				<br /><>Bloggers</><br /><br />
+				<Link href='/blog/ryan'>
+				<button className='block'>Ryan</button>
 				</Link>
 				<br />
 			</>}
 		{isPortfolio &&
 			<>
-				<br /><>Portfolios</><br /><br />
-				<Link href='/subsite/bitrot'>
-				<button className='block'>PLACEHOLDER</button>
+				<br /><>Portfolios and Résumés</><br /><br />
+				<Link href='/portfolio/ryan'>
+				<button className='block'>Ryan</button>
 				</Link>
 				<br />
 			</>}
@@ -122,6 +131,18 @@ const NavMenu = (props) => {
 				<br /><>Subsites</><br /><br />
 				<Link href='/subsite/bitrot'>
 				<button className='block'>Bitrot</button>
+				</Link>
+				<br />
+				<Link href='/subsite/geojot'>
+				<button className='block'>Geojot</button>
+				</Link>
+				<br />
+				<Link href='/subsite/speakeasy'>
+				<button className='block'>Speakeasy</button>
+				</Link>
+				<br />
+				<Link href='/subsite/timehack'>
+				<button className='block'>Timehack</button>
 				</Link>
 				<br />
 			</>}
