@@ -16,6 +16,7 @@ func main() {
 		Multiplexer/Router
 	*/
 	MuxRoutes()
+	// WsRoutes()
 }
 
 var upgrader = websocket.Upgrader{
@@ -52,27 +53,40 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 }
 
 // func WsRoutes() {
-// 	http.HandleFunc("/root", func(w http.ResponseWriter, r *http.Request) {
-// 		fmt.Fprintf(w, "Simple Server")
-// 	})
-// 	http.HandleFunc("/ws", serveWs)
+// 	ws := http.NewServeMux()
+
+// 	ws.HandleFunc("/ws", serveWs)
+
+// 	log.Fatal(http.ListenAndServe(":4001", ws))
 // }
 
 func MuxRoutes() {
-	// mux := http.NewServeMux()
+	finish := make(chan bool)
 
-	http.HandleFunc("/signup", SignUp)
-	http.HandleFunc("/signin", SignIn)
-	http.HandleFunc("/check", CheckStatus)
-	http.HandleFunc("/refresh", Refresh)
-	http.HandleFunc("/logout", Logout)
+	mux := http.NewServeMux()
+	ws := http.NewServeMux()
 
-	http.HandleFunc("/root", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Simple Server")
+	mux.HandleFunc("/signup", SignUp)
+	mux.HandleFunc("/signin", SignIn)
+	mux.HandleFunc("/check", CheckStatus)
+	mux.HandleFunc("/refresh", Refresh)
+	mux.HandleFunc("/logout", Logout)
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Server active.")
 	})
-	http.HandleFunc("/ws", serveWs)
 
-	log.Fatal(http.ListenAndServe(":4000", nil))
+	ws.HandleFunc("/ws", serveWs)
+
+	go func() {
+		log.Fatal(http.ListenAndServe(":4000", mux))
+	}()
+
+	go func() {
+		log.Fatal(http.ListenAndServe(":4001", ws))
+	}()
+
+	<-finish
 }
 
 // User store (replace with DB)
