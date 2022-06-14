@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { Stats } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
-import { utils } from '../scripts/utils'
+import { utils } from '../../../scripts/utils'
 let [rad] = [utils.getRadians]
 
 const Engine = () => {

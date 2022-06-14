@@ -3,9 +3,13 @@ import { Switch, Route } from 'wouter'
 
 // Components
 import NavMenu from './NavMenu'
-import Collection from './Collection'
+import Collection from './utils/Collection'
+
 const CanvasContainer = React.lazy(() =>
-	import('./CanvasContainer'))
+	import('./subsites/bitrot/CanvasContainer'))
+const ChatClient = React.lazy(() =>
+	import('./subsites/speakeasy/ChatClient'))
+
 // MDX Components
 import Demo from './Demo.mdx'
 import Landing from './Landing.mdx'
@@ -13,7 +17,6 @@ import Landing from './Landing.mdx'
 const RouteList = () => {
 	return (
 	<div>
-		{/* <Switch> */}
 			<Route path='/'>
 				<NavMenu/>
 				<Landing/>
@@ -32,9 +35,6 @@ const RouteList = () => {
 					<>Portfolio list. MDX note goes here...</>
 				</>
 			</Route>
-			{/* <Route path='/portfolio/:name'>
-				<NavMenu/>
-			</Route> */}
 			<Route path='/subsite'>
 				<NavMenu/>
 				<>
@@ -56,7 +56,7 @@ const RouteList = () => {
 			<Route path='/subsite/speakeasy'>
 				<NavMenu/>
 				<Suspense fallback={<>Loading site...</>}>
-					<>Under construction...</>
+					<ChatClient/>
 				</Suspense>
 			</Route>
 			<Route path='/subsite/timehack'>
@@ -65,13 +65,6 @@ const RouteList = () => {
 					<>Under construction...</>
 				</Suspense>
 			</Route>
-			{/* <Route path='/404'>
-				<>404, Not Found!</>
-			</Route> */}
-		{/* </Switch> */}
-		{/* <Switch>
-			<Route>{false && '404, Not Found!'}</Route>
-		</Switch>	 */}
 	</div>
 	)
 }

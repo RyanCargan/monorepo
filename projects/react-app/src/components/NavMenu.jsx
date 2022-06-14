@@ -96,10 +96,6 @@ const NavMenu = (props) => {
 				</button>
 				</Link>
 				<br />
-				{/* <Link href='/collection'>
-				<button className='block'>Collection (Placeholder)</button>
-				</Link>
-				<br /> */}
 			</div>}
 
 		{!isMain &&
