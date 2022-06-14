@@ -62,4 +62,4 @@ type User struct {
 	Password  string `db:"password" csv:"password"`
 }
 
-// TODO: password hashing
+// TODO: Argon2id password hashing
