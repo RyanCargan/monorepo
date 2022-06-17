@@ -76,6 +76,7 @@ const App = () => {
 
 export default App
 
+// TODO: Fix routing with switches and proxy configuration
 // TODO: Add tests with RTL & Jest (test coverage with c8)
 // TODO: Figure out cause of canvas margin/padding bugs
 // TODO: Create state machine with React hooks
