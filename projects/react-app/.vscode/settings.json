@@ -1,0 +1,17 @@
+{
+	"cSpell.enabled": true,
+	"spellright.language": [],
+	"spellright.documentTypes": [
+		"markdown",
+		"latex",
+		"plaintext"
+	],
+	"spellright.parserByClass": {
+		"mdx": {
+			"parser": "plain"
+		}
+	},
+	"deno.enable": false,
+	"deno.lint": false,
+	"deno.unstable": false
+}

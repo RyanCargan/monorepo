@@ -1,13 +1,13 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import { Switch, Route } from 'wouter'
 
 // Components
 import NavMenu from './NavMenu'
 import Collection from './utils/Collection'
 
-const CanvasContainer = React.lazy(() =>
+const CanvasContainer = lazy(() =>
 	import('./subsites/bitrot/CanvasContainer'))
-const ChatClient = React.lazy(() =>
+const ChatClient = lazy(() =>
 	import('./subsites/speakeasy/ChatClient'))
 
 // MDX Components

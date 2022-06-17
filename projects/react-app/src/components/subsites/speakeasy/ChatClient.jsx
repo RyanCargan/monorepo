@@ -1,88 +1,75 @@
-import React, { useState } from "react"
+import React, { useState, createContext } from "react"
+import ChatLog from "./ChatLog"
 import { utils } from '../../../scripts/utils'
 let [useEffectOnce] = [utils.useEffectOnce]
 import { socket } from "./client"
 
-// class ChatClient extends Component {
-//   constructor(props) {
-//     super(props)
-//     connect()
-//   }
-
-//   send() {
-//     console.log("hello")
-//     sendMsg("hello")
-//   }
-
-//   render() {
-//     return (
-//       <div className="chat-client">
-//         <button onClick={this.send}>Hit</button>
-//       </div>
-//     )
-//   }
-// }
-
 const ChatClient = (props) => {
-  // const [response, setResponse] = useState("")
-  // const [socket, setSocket] = useState(null)
 
   const [msg, setMsg] = useState("Fizz")
 
-  const SocketContext = React.createContext()
+  const SocketContext = createContext()
 
-  // const connect = () => {
-  //   console.log("Attempting Connection...")
+  let connect = () => {
+    console.log("Connecting...");
 
-  //   socket.onopen = () => {
-  //     console.log("Successfully Connected")
-  //   }
-  //   socket.onmessage = msg => {
-  //     console.log(msg)
-  //   }
-  //   socket.onclose = event => {
-  //     console.log("Socket Closed Connection: ", event)
-  //   }
-  //   socket.onerror = error => {
-  //     console.log("Socket Error: ", error)
-  //   }
-  // }
+    socket.onopen = () => {
+      console.log("Successfully Connected");
+    }
 
-  // const sendMsg = msg => {
-  //   console.log("sending msg: ", msg)
-  //   socket.send(msg)
-  // }
+    socket.onmessage = msg => {
+      console.log(msg)
+    }
 
-  // const msg = 'TEST'
+    socket.onclose = event => {
+      console.log("Socket Closed Connection: ", event);
+    }
+
+    socket.onerror = error => {
+      console.log("Socket Error: ", error)
+    }
+  }
+
+  const handleKeyDown = (e) => {
+    // Reset field height
+    e.target.style.height = 'inherit'
+
+    // Get computed styles for the element
+    const computed = window.getComputedStyle(e.target)
+
+    // Calculate height
+    const height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                 + parseInt(computed.getPropertyValue('padding-top'), 10)
+                 + e.target.scrollHeight
+                 + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                 + parseInt(computed.getPropertyValue('border-bottom-width'), 10)
+
+    e.target.style.height = `${height}px`
+    // Optional limit
+    // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`
+  }
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   useEffectOnce(() => {
-    // const socket = new WebSocket("ws://localhost:4001/ws") // Only for local testing!
-    // const socket = new WebSocket("wss://codinghermit.net/socketapi/ws")
-    // socket.onopen = () => {
-    //   console.log("Socket Connected!")
-    // }
-    // socket.onmessage = msg => {
-    //   console.log(msg)
-    // }
-    // socket.onclose = event => {
-    //   console.log("Closed Socket Connection: ", event)
-    // }
-    // socket.onerror = error => {
-    //   console.log("Socket Error: ", error)
-    // }
-    // const socket = socketIOClient(ENDPOINT);
-    // socket.on("FromAPI", data => {
-    //   setResponse(data)
-    // })
-  }, [])
+    connect()
+  }, [socket])
 
   return(
     <SocketContext.Provider value={socket}>
       <div className="chat-client">
-
-        {/* <button onClick={socket.onopen = () =>
-          console.log("Successfully Connected")}>Connect</button> */}
-
+        <div style={{
+          border: '10px solid white',
+        }}>
+          <ChatLog chatLog={[{data: 'CHAT1'}, {data: 'CHAT2'}]} />
+        </div>
+        <textarea
+        style={{
+          width: '98.5%',
+        }}
+        onKeyDown={handleKeyDown}/>
         <button onClick={()=> {
           if (msg === 'Fizz') {
             setMsg('Buzz')
@@ -91,12 +78,15 @@ const ChatClient = (props) => {
           }
           socket.send(`${msg}!`)
           console.log("Sent message!")
-        }}>Send</button>
+        }}>Send</button><br /><br />
 
-      {/* <p> */}
-        {/* It's <time dateTime={response}>{response}</time> */}
-        {/* RES: {response} */}
-      {/* </p> */}
+        <button onClick={() => {
+          refreshPage()
+        }}>Reopen Connection</button><br /><br />
+
+        <button onClick={() => {
+          socket.close()
+        }}>Close Connection</button>
     </div>
     </SocketContext.Provider>
   )
