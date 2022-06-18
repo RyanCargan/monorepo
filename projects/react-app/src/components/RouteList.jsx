@@ -17,12 +17,13 @@ import Landing from './Landing.mdx'
 const RouteList = () => {
 	return (
 	<div>
+		<Switch>
 			<Route path='/'>
-				<NavMenu/>
+				<NavMenu isMain={true}/>
 				<Landing/>
 			</Route>
 			<Route path='/blog'>
-				<NavMenu/>
+				<NavMenu isBlog={true}/>
 				<Demo  N={2.0} />
 			</Route>
 			<Route path='/collection'>
@@ -30,41 +31,43 @@ const RouteList = () => {
 				<Collection var1='world!' />
 			</Route>
 			<Route path='/portfolio'>
-				<NavMenu/>
+				<NavMenu isPortfolio={true}/>
 				<>
 					<>Portfolio list. MDX note goes here...</>
 				</>
 			</Route>
 			<Route path='/subsite'>
-				<NavMenu/>
+				<NavMenu isSubsite={true}/>
 				<>
 					<>Current subsites. MDX note goes here...</>
 				</>
 			</Route>
 			<Route path='/subsite/bitrot'>
-				<NavMenu/>
+				<NavMenu isSubsite={true}/>
 				<Suspense fallback={<>Loading canvas...</>}>
 					<CanvasContainer />
 				</Suspense>
 			</Route>
 			<Route path='/subsite/geojot'>
-				<NavMenu/>
+				<NavMenu isSubsite={true}/>
 				<Suspense fallback={<>Loading site...</>}>
 					<>Under construction...</>
 				</Suspense>
 			</Route>
 			<Route path='/subsite/speakeasy'>
-				<NavMenu/>
+				<NavMenu isSubsite={true}/>
 				<Suspense fallback={<>Loading site...</>}>
 					<ChatClient/>
 				</Suspense>
 			</Route>
 			<Route path='/subsite/timehack'>
-				<NavMenu/>
+				<NavMenu isSubsite={true}/>
 				<Suspense fallback={<>Loading site...</>}>
 					<>Under construction...</>
 				</Suspense>
 			</Route>
+			<Route>404, Not Found!</Route>
+		</Switch>
 	</div>
 	)
 }

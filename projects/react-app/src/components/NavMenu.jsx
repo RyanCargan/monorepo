@@ -9,58 +9,58 @@ let [useEffectOnce] = [utils.useEffectOnce]
 // }
 
 const NavMenu = (props) => {
-	const users = useStore(state => state.users)
+	// const users = useStore(state => state.users)
 
-	// Menu & sub-menus
-	const [isMain, setIsMain] = useState(true)
-	const [isBlog, setIsBlog] = useState(false)
-	const [isPortfolio, setIsPortfolio] = useState(false)
-	const [isSubsite, setIsSubsite] = useState(false)
-	const [isUnknown, setIsUnknown] = useState(false)
+	// // Menu & sub-menus
+	// const [isMain, setIsMain] = useState(true)
+	// const [isBlog, setIsBlog] = useState(false)
+	// const [isPortfolio, setIsPortfolio] = useState(false)
+	// const [isSubsite, setIsSubsite] = useState(false)
+	// const [isUnknown, setIsUnknown] = useState(false)
 
-	const [location, setLocation] = useLocation()
+	// const [location, setLocation] = useLocation()
   
-	//Effect is called everytime the values change
-	useEffectOnce(() => {
-	  console.log(isMain)
-	}, [isMain])
+	// //Effect is called everytime the values change
+	// useEffectOnce(() => {
+	//   console.log(isMain)
+	// }, [isMain])
   
 	/*
 	Move this useEffect's conditions to a separate component and replace useState with Zustand's global useStore.
 	That should enable 404s without relying on wouter's switch.
 	*/
-	useEffectOnce(() => {
-	  	console.log(`Location detected:\n${location}`)
-	  // Fire functions on path (site.com/path/subpath) changes
-		if (location === '/') {
-			setIsMain(isMain)
-			console.log('Main')
-		} else if (location.startsWith('/blog')) {
-			console.log('Blog')
-			setIsMain(!isMain)
-			setIsBlog(true)
-		} else if (location.startsWith('/portfolio')) {
-			console.log('Portfolio')
-			setIsMain(!isMain)
-			setIsPortfolio(true)
-		} else if (location.startsWith('/subsite')) {
-			console.log('Subsite')
-			setIsMain(!isMain)
-			setIsSubsite(true)
-		}
-		// else if (location === '/subsite/bitrot') {
-		// 	console.log('Bitrot')
-		// 	setIsMain(!isMain)
-		// 	setIsSubsite(true)
-		// }
-		// } else {
-		// 	setIsUnknown(true) // Never triggers since NavMenu won't load from App.jsx on unknown URLs
-		// 	console.log('Unknown')
-		// 	// alert('404')
-		// 	// setLocation('/404')
-		// 	// window.location.pathname == '/404'
-		// }
-	}, [location])
+	// useEffectOnce(() => {
+	//   	console.log(`Location detected:\n${location}`)
+	//   // Fire functions on path (site.com/path/subpath) changes
+	// 	if (location === '/') {
+	// 		setIsMain(isMain)
+	// 		console.log('Main')
+	// 	} else if (location.startsWith('/blog')) {
+	// 		console.log('Blog')
+	// 		setIsMain(!isMain)
+	// 		setIsBlog(true)
+	// 	} else if (location.startsWith('/portfolio')) {
+	// 		console.log('Portfolio')
+	// 		setIsMain(!isMain)
+	// 		setIsPortfolio(true)
+	// 	} else if (location.startsWith('/subsite')) {
+	// 		console.log('Subsite')
+	// 		setIsMain(!isMain)
+	// 		setIsSubsite(true)
+	// 	}
+	// 	// else if (location === '/subsite/bitrot') {
+	// 	// 	console.log('Bitrot')
+	// 	// 	setIsMain(!isMain)
+	// 	// 	setIsSubsite(true)
+	// 	// }
+	// 	// } else {
+	// 	// 	setIsUnknown(true) // Never triggers since NavMenu won't load from App.jsx on unknown URLs
+	// 	// 	console.log('Unknown')
+	// 	// 	// alert('404')
+	// 	// 	// setLocation('/404')
+	// 	// 	// window.location.pathname == '/404'
+	// 	// }
+	// }, [location])
 
 	// useEffectOnce(() => {
 	// 	// Redirect to login if session request fails
@@ -78,7 +78,7 @@ const NavMenu = (props) => {
 		{/* {isUnknown &&
 			<>404!</>} */}
 
-		{isMain &&
+		{props.isMain &&
 			<div className='nav-menu'>
 				<Link href='/blog'>
 				<button className='block'>
@@ -98,7 +98,7 @@ const NavMenu = (props) => {
 				<br />
 			</div>}
 
-		{!isMain &&
+		{!props.isMain &&
 			<div className='subsite-nav-menu'>
 				<Link href='/'>
 				<button className='block'>
@@ -106,7 +106,7 @@ const NavMenu = (props) => {
 				</button>
 				<br />
 				</Link>
-		{isBlog &&
+		{props.isBlog &&
 			<>
 				<br /><>Bloggers</><br /><br />
 				<Link href='/blog/ryan'>
@@ -114,7 +114,7 @@ const NavMenu = (props) => {
 				</Link>
 				<br />
 			</>}
-		{isPortfolio &&
+		{props.isPortfolio &&
 			<>
 				<br /><>Portfolios and Résumés</><br /><br />
 				<Link href='/portfolio/ryan'>
@@ -122,7 +122,7 @@ const NavMenu = (props) => {
 				</Link>
 				<br />
 			</>}
-		{isSubsite &&
+		{props.isSubsite &&
 			<>
 				<br /><>Subsites</><br /><br />
 				<Link href='/subsite/bitrot'>
