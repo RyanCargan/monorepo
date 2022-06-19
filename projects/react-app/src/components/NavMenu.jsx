@@ -11,57 +11,6 @@ let [useEffectOnce] = [utils.useEffectOnce]
 const NavMenu = (props) => {
 	// const users = useStore(state => state.users)
 
-	// // Menu & sub-menus
-	// const [isMain, setIsMain] = useState(true)
-	// const [isBlog, setIsBlog] = useState(false)
-	// const [isPortfolio, setIsPortfolio] = useState(false)
-	// const [isSubsite, setIsSubsite] = useState(false)
-	// const [isUnknown, setIsUnknown] = useState(false)
-
-	// const [location, setLocation] = useLocation()
-  
-	// //Effect is called everytime the values change
-	// useEffectOnce(() => {
-	//   console.log(isMain)
-	// }, [isMain])
-  
-	/*
-	Move this useEffect's conditions to a separate component and replace useState with Zustand's global useStore.
-	That should enable 404s without relying on wouter's switch.
-	*/
-	// useEffectOnce(() => {
-	//   	console.log(`Location detected:\n${location}`)
-	//   // Fire functions on path (site.com/path/subpath) changes
-	// 	if (location === '/') {
-	// 		setIsMain(isMain)
-	// 		console.log('Main')
-	// 	} else if (location.startsWith('/blog')) {
-	// 		console.log('Blog')
-	// 		setIsMain(!isMain)
-	// 		setIsBlog(true)
-	// 	} else if (location.startsWith('/portfolio')) {
-	// 		console.log('Portfolio')
-	// 		setIsMain(!isMain)
-	// 		setIsPortfolio(true)
-	// 	} else if (location.startsWith('/subsite')) {
-	// 		console.log('Subsite')
-	// 		setIsMain(!isMain)
-	// 		setIsSubsite(true)
-	// 	}
-	// 	// else if (location === '/subsite/bitrot') {
-	// 	// 	console.log('Bitrot')
-	// 	// 	setIsMain(!isMain)
-	// 	// 	setIsSubsite(true)
-	// 	// }
-	// 	// } else {
-	// 	// 	setIsUnknown(true) // Never triggers since NavMenu won't load from App.jsx on unknown URLs
-	// 	// 	console.log('Unknown')
-	// 	// 	// alert('404')
-	// 	// 	// setLocation('/404')
-	// 	// 	// window.location.pathname == '/404'
-	// 	// }
-	// }, [location])
-
 	// useEffectOnce(() => {
 	// 	// Redirect to login if session request fails
 	// 	if (checkSessionState() === false) {
@@ -69,43 +18,36 @@ const NavMenu = (props) => {
 	// 	}
 	// }, [])
 
-	return (
-		<div>
-			{/* <div>
-			{`The current page is: ${location}`}
-			<a onClick={() => setLocation("/somewhere")}><br />Click to update</button>
-			</div> */}
-		{/* {isUnknown &&
-			<>404!</>} */}
+return (
+<div>
+	{props.isMain &&
+		<div className='nav-menu'>
+			<Link href='/blog'>
+			<button className='block'>
+				Blogs
+			</button>
+			</Link>
+			<br />
+			<Link href='/portfolio'>
+			<button className='block'>Portfolios</button>
+			</Link>
+			<br />
+			<Link href='/subsite'>
+			<button className='block'>
+				Subsites
+			</button>
+			</Link>
+			<br />
+		</div>}
 
-		{props.isMain &&
-			<div className='nav-menu'>
-				<Link href='/blog'>
-				<button className='block'>
-					Blogs
-				</button>
-				</Link>
-				<br />
-				<Link href='/portfolio'>
-				<button className='block'>Portfolios</button>
-				</Link>
-				<br />
-				<Link href='/subsite'>
-				<button className='block'>
-					Subsites
-				</button>
-				</Link>
-				<br />
-			</div>}
-
-		{!props.isMain &&
-			<div className='subsite-nav-menu'>
-				<Link href='/'>
-				<button className='block'>
-					Main Menu
-				</button>
-				<br />
-				</Link>
+	{!props.isMain &&
+		<div className='subsite-nav-menu'>
+			<Link href='/'>
+			<button className='block'>
+				Main Menu
+			</button>
+			<br />
+			</Link>
 		{props.isBlog &&
 			<>
 				<br /><>Bloggers</><br /><br />
@@ -142,10 +84,8 @@ const NavMenu = (props) => {
 				</Link>
 				<br />
 			</>}
-		</div>}
-
-		</div>
-	)
-}
+	</div>}
+</div>
+)}
 
 export default NavMenu
