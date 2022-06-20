@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RouteController {
 	@RequestMapping("/")
-	public String getGreeting() {
+	public String getRoot() {
 		return "Hi from Spring.";
+	}
+	@RequestMapping("/check")
+	public String getCheck() {
+		return "Checked.";
 	}
 }
