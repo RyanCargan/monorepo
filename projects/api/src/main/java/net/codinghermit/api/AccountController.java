@@ -8,18 +8,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.codinghermit.api.model.tables.pojos.Book;
+import net.codinghermit.api.model.tables.pojos.Account;
 
 @RestController
-public class BookController {
+public class AccountController {
     @Autowired
-    BookService bookService;
-    @GetMapping(value = "/books")
-    public List<Book> getBooks(){
-        return this.bookService.getBooks();
+    AccountService accountService;
+
+    @GetMapping(value = "/accounts")
+    public List<Account> getAccounts(){
+        return this.accountService.getAccounts();
     }
     @PostMapping
-    public void postBook(@RequestBody Book book){
-        this.bookService.insertBook(book);
+    public void postAccount(@RequestBody Account account){
+        this.accountService.insertAccount(account);
     }
 }
