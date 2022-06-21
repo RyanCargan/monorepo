@@ -27,10 +27,15 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jooq</artifactId>
-		 </dependency>
+		 </dependency> -->
+
+		 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		  </dependency>
 
 		 <dependency>
 			<groupId>org.postgresql</groupId>
@@ -38,7 +43,7 @@
 			<scope>runtime</scope>
 		 </dependency>
 
-		 <dependency>
+		 <!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		 </dependency>
@@ -58,7 +63,7 @@
 
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 			<scope>runtime</scope>
 		</dependency>
@@ -67,7 +72,7 @@
 		    <groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		 </dependency>
+		 </dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -83,7 +88,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.jooq</groupId>
 				<artifactId>jooq-codegen-maven</artifactId>
 				<executions>
@@ -96,7 +101,6 @@
 				   </execution>
 				</executions>
 				<configuration>
-					<!--Insert your DB configuration-->
 					<jdbc>
 					<driver>org.postgresql.Driver</driver>
 					<url>jdbc:postgresql://localhost:5432/codinghermit</url>
@@ -130,7 +134,7 @@
 					</target>
 					</generator>
 				</configuration>
-			 </plugin>
+			 </plugin> -->
 		</plugins>
 	</build>
 

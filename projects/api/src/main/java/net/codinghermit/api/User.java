@@ -1,17 +1,17 @@
-package net.codinghermit.api;
+// package net.codinghermit.api;
 
-public class User {
-	private final Integer userId;
-	private final String userName;
+// public class User {
+// 	private final Integer userId;
+// 	private final String userName;
 
-	public User(Integer userId, String userName) {
-		this.userId = userId;
-		this.userName = userName;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-}
+// 	public User(Integer userId, String userName) {
+// 		this.userId = userId;
+// 		this.userName = userName;
+// 	}
+// 	public Integer getUserId() {
+// 		return userId;
+// 	}
+// 	public String getUserName() {
+// 		return userName;
+// 	}
+// }
