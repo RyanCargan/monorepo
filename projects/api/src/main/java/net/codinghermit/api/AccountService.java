@@ -1,3 +1,10 @@
+package net.codinghermit.api;
+
+public class AccountService {
+	Account validateAccount(String email, String password) throws ApiAuthException;
+	Account registerAccount(String firstName, String lastName, String email, String password) throws ApiAuthException;
+}
+
 // package net.codinghermit.api;
 
 // import java.util.List;
