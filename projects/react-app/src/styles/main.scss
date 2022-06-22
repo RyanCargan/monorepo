@@ -80,6 +80,26 @@ body {
 .block-part {
 	width: 10%;
 }
+.header-block {
+	width: 100%;
+	background-color: rgb(248, 249, 250);
+	font-size: 125%;
+}
+.header-block:hover {
+	width: 75%;
+	background-color: rgba(210, 211, 238, 0.471);
+	font-size: 100%;
+}
+.list-block {
+	width: 75%;
+	background-color: rgb(195, 201, 221);
+	font-size: 125%;
+}
+.list-block:hover {
+	width: 50%;
+	background-color: rgba(210, 211, 238, 0.471);
+	font-size: 100%;
+}
 
 // Canvas HTML elements
 // .canvas-component {
@@ -128,6 +148,13 @@ body {
 .mdx-ulist {
 	// color: rgb(165, 178, 226);
 	margin-left: 1%;
+	padding-left: 1%;
+	// padding-top: 0;
+}
+.mdx-olist {
+	// color: rgb(165, 178, 226);
+	margin-left: 1%;
+	padding-left: 1%;
 	// padding-top: 0;
 }
 // .mdx-footer {

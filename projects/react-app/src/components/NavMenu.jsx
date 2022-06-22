@@ -56,6 +56,13 @@ return (
 				</Link>
 				<br />
 			</>}
+			{props.isBlogger &&
+				<>
+					<Link href='/blog'>
+					<button className='block'>Bloggers</button>
+					</Link>
+					<br />
+				</>}
 		{props.isPortfolio &&
 			<>
 				<br /><>Portfolios and Résumés</><br /><br />
