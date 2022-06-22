@@ -71,6 +71,7 @@ body {
 // Filling buttons
 .block {
 	width: 100%;
+	transition: 0.66s ease-out;
 }
 .block:hover {
 	width: 90%;
@@ -79,11 +80,13 @@ body {
 }
 .block-part {
 	width: 10%;
+	transition: 0.66s ease-out;
 }
 .header-block {
 	width: 100%;
 	background-color: rgb(248, 249, 250);
 	font-size: 125%;
+	transition: 0.66s ease-out;
 }
 .header-block:hover {
 	width: 75%;
@@ -94,6 +97,7 @@ body {
 	width: 75%;
 	background-color: rgb(195, 201, 221);
 	font-size: 125%;
+	transition: 0.66s ease-out;
 }
 .list-block:hover {
 	width: 50%;
