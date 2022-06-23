@@ -30,6 +30,7 @@ body {
 // Base custom classes
 .app {
 	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(87,135,255,1) 0%, rgba(247,247,247,1) 94%);
+	min-height: 95vh;
 }
 // .link {
 // 	width: 100%;
@@ -52,7 +53,9 @@ body {
 	// transform-origin: 250% 100%;
 	// z-index: -1;
 }
-
+.animation {
+	overflow: hidden;
+}
 
 // Navigation components 
 .nav-menu {
@@ -104,6 +107,15 @@ body {
 	background-color: rgba(210, 211, 238, 0.471);
 	font-size: 100%;
 }
+// .list-container {
+// 	min-height: 200px;
+// }
+// .list-group {
+// 	width: 100px;
+// 	height: 100px;
+// 	margin: 0 auto;
+// 	background-color: white;
+// }
 
 // Canvas HTML elements
 // .canvas-component {
