@@ -1,4 +1,6 @@
+/// <reference types="vitest" />
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
+import { configDefaults } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 
 import mdx from '@mdx-js/rollup'
@@ -60,10 +62,19 @@ export default defineConfig({
 		port: 3000,
 		headers: {
 			'Cross-Origin-Embedder-Policy': 'require-corp',
-			'Cross-Origin-Opener-Policy': 'same-origin'
+			'Cross-Origin-Opener-Policy': 'same-origin',
 		  }
 	},
 	preview: {
 		port: 4000,
+	},
+	test: {
+		// Options
+		globals: true,
+		environment: 'jsdom',
+		setupFiles: './setupTests.js',
+		exclude: [...configDefaults.exclude,
+			'**/src/{scripts,components}/**',
+		],
 	},
 })

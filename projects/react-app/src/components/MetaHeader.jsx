@@ -6,7 +6,7 @@ const MetaHeader = () => {
 		<div>
 			<Helmet>
 				<title>Coding Hermit</title>
-				
+
 				{/* Dependencies */}
 				<link
 				rel='stylesheet'

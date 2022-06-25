@@ -70,13 +70,13 @@ const App = () => {
         Did you mean <a href={placeholder}>{placeholder}</a>?
       </div>} */}
       <RouteList />
+      {/* <>TEST</> */}
+      {/* TEST minus any letter fails while TEST plus anything (i.e. *TEST*) succeeds */}
     </div>
   )
 }
 
 export default App
 
-// TODO: Fix routing with switches and proxy configuration
-// TODO: Add tests with RTL & Jest (test coverage with c8)
 // TODO: Figure out cause of canvas margin/padding bugs
 // TODO: Create state machine with React hooks
