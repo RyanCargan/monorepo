@@ -1,6 +1,9 @@
 /// <reference types="vitest" />
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { configDefaults } from 'vitest/config'
+
+// import babel from 'vite-plugin-babel'
+
 import react from '@vitejs/plugin-react'
 
 import mdx from '@mdx-js/rollup'
@@ -57,6 +60,7 @@ export default defineConfig({
 		}),
 		mdx(options),
 		splitVendorChunkPlugin(),
+		// babel(),
 	],
 	server: {
 		port: 3000,

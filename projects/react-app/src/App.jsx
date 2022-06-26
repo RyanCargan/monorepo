@@ -18,7 +18,7 @@ import { utils } from './scripts/utils'
 let [useEffectOnce] = [utils.useEffectOnce]
 
 const App = () => {
-  const placeholder = 'https://codinghermit.net'
+  // const placeholder = 'https://codinghermit.net'
 
   // // Loc test (refactor all this to a UrlCheck component later)
   // const [location, setLocation] = useLocation()

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTransition, animated, config, easings } from '@react-spring/web'
 import { Waypoint } from 'react-waypoint'
+import { Link } from 'wouter'
 
 // Custom Components
 import FadeIn from '../../animation/FadeIn'
@@ -41,6 +42,7 @@ return (
 	{/* {`The current page is: ${location}`} */}
 	<h1>Articles</h1>
 
+
 	<button
 	onClick={() => {
 		if (topic === 1)
@@ -48,13 +50,36 @@ return (
 		else
 			setTopic(1)
 	}}
-	className='header-block'>Java</button>
+	className='header-block'>General Programming</button>
 	<br />
 
-	{/* {topic === 1 && */}
 	<div className='list-container'>
 	{transition((style, item) =>
 		item === 1 ?
+		<animated.div style={style} className='list-group'>
+		<Link href='/blog/ryan/tdd'>
+		<button className='list-block'>Test-Driven Design</button>
+		</Link>
+		<br />
+		</animated.div>
+		:''
+	)}
+	</div>
+
+	<button
+	onClick={() => {
+		if (topic === 2)
+			setTopic(0)
+		else
+			setTopic(2)
+	}}
+	className='header-block'>Java</button>
+	<br />
+
+	{/* TODO: Replace with map */}
+	<div className='list-container'>
+	{transition((style, item) =>
+		item === 2 ?
 		<animated.div style={style} className='list-group'>
 		<button className='list-block'>Java's Lineage & Evolution</button>
 		<br />

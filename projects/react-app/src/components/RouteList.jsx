@@ -10,12 +10,15 @@ const CanvasContainer = lazy(() =>
 	import('./subsites/bitrot/CanvasContainer'))
 const ChatClient = lazy(() =>
 	import('./subsites/speakeasy/ChatClient'))
+const Stopwatch = lazy(() =>
+	import('./subsites/timehack/Stopwatch'))
 
 // MDX Components
 // import Demo from './Demo.mdx'
 import Landing from './Landing.mdx'
 const BlogLanding = Landing
 const PortfolioLanding = Landing
+import AboutRyan from './portfolios/Ryan/About.mdx'
 const SubsiteLanding = Landing
 // import BlogLanding from './BlogLanding.mdx'
 // import PortfolioLanding from './PortfolioLanding.mdx'
@@ -23,6 +26,10 @@ const SubsiteLanding = Landing
 
 // Bloggers
 import Arcticle from './blogs/Ryan/Articles'
+
+// TODO: Replace repetitve article imports with batch export & import
+// Articles
+import Tdd from './blogs/Ryan/articles/Tdd.mdx'
 
 // Portfolios
 
@@ -48,6 +55,11 @@ const RouteList = () => {
 				<NavMenu isBlogger={true}/>
 				<Arcticle/>
 			</Route>
+			{/* Ryan's Articles */}
+			<Route path='/blog/ryan/tdd'>
+				<NavMenu isBlogger={true}/>
+				<Tdd/>
+			</Route>
 			{/* Portfolios */}
 			<Route path='/portfolio'>
 				<NavMenu isPortfolio={true}/>
@@ -55,7 +67,7 @@ const RouteList = () => {
 			</Route>
 			<Route path='/portfolio/ryan'>
 				<NavMenu isPortfolio={true}/>
-				<PortfolioLanding/>
+				<AboutRyan/>
 			</Route>
 			{/* Subsites */}
 			<Route path='/subsite'>
@@ -83,7 +95,7 @@ const RouteList = () => {
 			<Route path='/subsite/timehack'>
 				<NavMenu isSubsite={true}/>
 				<Suspense fallback={<>Loading site...</>}>
-					<>Under construction...</>
+					<Stopwatch/>
 				</Suspense>
 			</Route>
 			{/* 404 */}
