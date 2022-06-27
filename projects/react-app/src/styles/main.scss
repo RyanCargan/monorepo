@@ -2,13 +2,13 @@
 
 
 // Built-in classes
-* { 
-    margin: 2px 1px 2px 1px;
-    // padding: 0; 
+* {
+	// padding: 0;
     // box-sizing: border-box;
-	padding: 2px 1px 2px 1px; // padding: top right bottom left 
 	border-radius:7px;
 	font-family: "Verdana", "Arial", sans-serif;
+	// margin: 2px 1px 2px 1px;
+	// padding: 2px 1px 2px 1px; // padding: top right bottom left
 }
 
 html {
@@ -25,12 +25,16 @@ body {
     // background-attachment: fixed;
 	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(209,215,219,1) 94%);
 	// margin: 0;
+	// margin: 2px 1px 2px 1px;
+	// padding: 2px 1px 2px 1px; // padding: top right bottom left
 }
 
 // Base custom classes
 .app {
 	background: radial-gradient(circle, rgba(171,180,207,1) 0%, rgba(87,135,255,1) 0%, rgba(247,247,247,1) 94%);
 	min-height: 95vh;
+	margin: 2px 1px 2px 1px;
+	padding: 2px 1px 2px 1px; // padding: top right bottom left
 }
 // .link {
 // 	width: 100%;
@@ -119,12 +123,14 @@ body {
 
 // Canvas HTML elements
 // .canvas-component {
-	// width: 100%;
-    // background-color: red;
-    // display: block;
-	// display: flex;
+    // margin: 0px 0px 0px 0px;
+    // // padding: 0; 
+    // // box-sizing: border-box;
+	// padding: 0px 0px 0px 0px; // padding: top right bottom left 
+	// border-radius: 0px;
 	// margin: 0 0 0 0 !important;
 	// padding: 0 0 0 0 !important;
+	// all: initial !important;
 // }
 // .canvas-ui {
 	// text-align: center;
@@ -139,7 +145,11 @@ body {
 	transform: translate(calc(50vw - 50px), calc(-45vh));
 }
 // .engine-container {
-
+//     margin: 0px 0px 0px 0px;
+//     // padding: 0;
+//     // box-sizing: border-box;
+// 	padding: 0px 0px 0px 0px; // padding: top right bottom left 
+// 	border-radius: 0px;
 // }
 
 // Rendering engine
@@ -150,11 +160,23 @@ body {
 	// padding-right: 2px 1px 2px 1px;
 	// margin-right: 2px 1px 2px 1px;
 }
+// Stopwatch
+.stopwatch{
+	margin: 2px 1px 2px 1px;
+	padding: 2px 1px 2px 1px; // padding: top right bottom left
+}
 
 // MDX components
+// .mdx-base {
+// 	margin: 2px 1px 2px 1px;
+// 	padding: 2px 1px 2px 1px; // padding: top right bottom left
+// }
+.mdx-heading {
+margin-left: 1%;
+}
 .mdx-paragraph {
 	color: rgb(0, 0, 0);
-	// margin-left: 1em;
+	margin-left: 1%;
 }
 .mdx-section {
 	color: rgb(165, 178, 226);
@@ -163,14 +185,14 @@ body {
 }
 .mdx-ulist {
 	// color: rgb(165, 178, 226);
-	margin-left: 1%;
-	padding-left: 1%;
+	margin-left: 2%;
+	padding-left: 2%;
 	// padding-top: 0;
 }
 .mdx-olist {
 	// color: rgb(165, 178, 226);
-	margin-left: 1%;
-	padding-left: 1%;
+	margin-left: 2%;
+	padding-left: 2%;
 	// padding-top: 0;
 }
 // .mdx-footer {

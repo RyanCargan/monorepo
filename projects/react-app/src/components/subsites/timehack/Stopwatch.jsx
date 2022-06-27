@@ -1,6 +1,7 @@
-import { current } from 'immer'
+// import { current } from 'immer'
 import React, { useState, useEffect } from 'react'
-import { beep } from './beep'
+import addNotification from 'react-push-notification'
+import { beep, sounds } from './sounds'
 
 let currentTime = 0
 let currentLaps = 0
@@ -16,16 +17,59 @@ function sleep(ms) {
 // 	}
 // }
 
-const Stopwatch = () => {
+const pushMsg = (laps) => {
+	addNotification({
+		title: 'Lap Complete',
+		// subtitle: `Currently on Lap: ${laps}`,
+		message: `Current Lap: ${laps}`,
+		theme: 'red',
+		native: true // when using native, your OS will handle theming.
+	})
+}
+
+const Stopwatch = (props) => {
 	const [time, setTime] = useState(0)
 	const [running, setRunning] = useState(false)
 	const [end, setEnd] = useState(0)
 	const [laps, setLaps] = useState(0)
+	const [placeholder, setPlaceholder] = useState('Enter lap length')
 
-	function handleChange(event) {
-		setEnd(event.target.value)
+	async function handleChange(e) {
+		await setEnd(e.target.value)
+		// console.log(end)
+	}
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		if(!e) return
+		// const result = e.target.value.replace(/\D/g, '')
+		const result = e.target.value
+		// setEnd(parseInt(e.target.value))
+		if (result) {
+			await setEnd(result)
+		}
+		console.log(e)
+		// console.log(result)
 		console.log(end)
 	}
+	// const handleSubmit = (e) => () => {
+		// e.preventDefault()
+		// if(!e) return
+		// const result = e.target.value.replace(/\D/g, '')
+		// const result = parseInt(e.target.value)
+		// setEnd(parseInt(e.target.value))
+		// setEnd(result)
+		// console.log(e.target.value)
+		// console.log(result)
+		// console.log(end)
+	// }
+	// const handleReset = () => {
+	// 	Array.from(document.querySelectorAll("input")).forEach(
+	// 	  input => (input.value = "")
+	// 	)
+	// 	this.setState({
+	// 	  itemvalues: [{}]
+	// 	})
+	// }
 
 	currentTime = time
 	currentLaps = laps
@@ -41,7 +85,9 @@ const Stopwatch = () => {
 			if ((end > 0) && currentTime === (end * 1000)) {
 				setTime(0)
 				setLaps((laps) => laps + 1)
-				beep()
+				// beep()
+				sounds.snd1.play()
+				pushMsg(currentLaps)
 			}
 		  }, 10)
 		} else if (!running) {
@@ -51,6 +97,11 @@ const Stopwatch = () => {
 		return () => clearInterval(interval)
 
 	  }, [running])
+
+	  useEffect(()=> {
+        // Here we will have the correct value for 'end'
+		console.log(end)
+    },[end])
 
 	return (
 		<div className="stopwatch">
@@ -69,10 +120,22 @@ const Stopwatch = () => {
 					beep()
 				}}>Stop</button>
 				<button onClick={() => {
+					setRunning(false)
 					setTime(0)
+					// setEnd(0)
+					setLaps(0)
 					beep()
 				}}>Reset</button>
-				<input placeholder="Repeat after this many seconds" onChange={handleChange}/>
+				{/* <input onChange={handleChange}/> */}
+				<form onSubmit={(e) => handleSubmit(e)}>
+					<div>
+						<h3>Current Interval: {end}</h3>
+						<h3>Current Laps: {laps}</h3>
+						<label htmlFor="intervalInput">Interval:</label>
+						<input id="intervalInput" type="text" placeholder={placeholder} required onChange={(e) => handleChange(e)} />
+					</div>
+					<button type="submit">Submit</button>
+				</form>
 			</div>
 		</div>
 	)

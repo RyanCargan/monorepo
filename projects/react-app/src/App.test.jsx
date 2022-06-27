@@ -24,6 +24,11 @@ vi.mock('react-helmet-async', () => {
 //   Helmet.prototype.Helmet = vi.fn()
   return { Helmet }
 })
+vi.mock('react-push-notification', () => {
+  const Notifications = vi.fn()
+//   Notifications.prototype.Notifications = vi.fn()
+  return { Notifications }
+})
 
 describe('Simple working test', () => {
 

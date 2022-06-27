@@ -1,6 +1,8 @@
 /// <reference types="vitest" />
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import { configDefaults } from 'vitest/config'
+import { viteCommonjs, esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
+
 
 // import babel from 'vite-plugin-babel'
 
@@ -61,6 +63,7 @@ export default defineConfig({
 		mdx(options),
 		splitVendorChunkPlugin(),
 		// babel(),
+		viteCommonjs(),
 	],
 	server: {
 		port: 3000,
@@ -80,5 +83,16 @@ export default defineConfig({
 		exclude: [...configDefaults.exclude,
 			'**/src/{scripts,components}/**',
 		],
+	},
+
+optimizeDeps: {
+	esbuildOptions: {
+		plugins: [
+		// Solves:
+		// https://github.com/vitejs/vite/issues/5308
+		// add the name of your package
+		// esbuildCommonjs(['tiny-slider', 'tiny-slider-react']),
+		],
+	},
 	},
 })

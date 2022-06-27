@@ -1,6 +1,7 @@
 // Packages
 import React, { useState } from 'react'
 import { useLocation } from 'wouter'
+import { Notifications } from 'react-push-notification'
 // import { Link, Route, useLocation, Router } from 'wouter'
 // import { Helmet } from 'react-helmet-async'
 // import { Route } from 'wouter' // Required for RouteList?
@@ -59,6 +60,7 @@ const App = () => {
 
   return(
     <div className='app'>
+      <Notifications />
       <MetaHeader/>
       {/* Enter a 'Did you mean X?' suggestion into the template literal or HTML element,
       using regex to find Levenshtein distance,
