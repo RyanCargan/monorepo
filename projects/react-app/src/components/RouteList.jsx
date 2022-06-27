@@ -30,6 +30,19 @@ import Arcticle from './blogs/Ryan/Articles'
 // TODO: Replace repetitve article imports with batch export & import
 // Articles
 import Tdd from './blogs/Ryan/articles/Tdd.mdx'
+import JavaLineage from './blogs/Ryan/articles/JavaLineage.mdx'
+import Databases from './blogs/Ryan/articles/Databases.mdx'
+import Jooq from './blogs/Ryan/articles/Jooq.mdx'
+import SearchingAndSorting from './blogs/Ryan/articles/SearchingAndSorting.mdx'
+import DataStructures from './blogs/Ryan/articles/DataStructures.mdx'
+import Polymorphism from './blogs/Ryan/articles/Polymorphism.mdx'
+import Concurrency from './blogs/Ryan/articles/Concurrency.mdx'
+import ExceptionHandling from './blogs/Ryan/articles/ExceptionHandling.mdx'
+import JavaCollections from './blogs/Ryan/articles/JavaCollections.mdx'
+import ArrayLists from './blogs/Ryan/articles/ArrayLists.mdx'
+import Arrays from './blogs/Ryan/articles/Arrays.mdx'
+import Java from './blogs/Ryan/articles/Java.mdx'
+import Oop from './blogs/Ryan/articles/Oop.mdx'
 
 // Portfolios
 
@@ -59,6 +72,58 @@ const RouteList = () => {
 			<Route path='/blog/ryan/tdd'>
 				<NavMenu isBlogger={true}/>
 				<Tdd/>
+			</Route>
+			<Route path='/blog/ryan/java-lineage'>
+				<NavMenu isBlogger={true}/>
+				<JavaLineage/>
+			</Route>
+			<Route path='/blog/ryan/databases'>
+				<NavMenu isBlogger={true}/>
+				<Databases/>
+			</Route>
+			<Route path='/blog/ryan/jooq'>
+				<NavMenu isBlogger={true}/>
+				<Jooq/>
+			</Route>
+			<Route path='/blog/ryan/searching-and-sorting'>
+				<NavMenu isBlogger={true}/>
+				<SearchingAndSorting/>
+			</Route>
+			<Route path='/blog/ryan/data-structures'>
+				<NavMenu isBlogger={true}/>
+				<DataStructures/>
+			</Route>
+			<Route path='/blog/ryan/polymorphism'>
+				<NavMenu isBlogger={true}/>
+				<Polymorphism/>
+			</Route>
+			<Route path='/blog/ryan/concurrency'>
+				<NavMenu isBlogger={true}/>
+				<Concurrency/>
+			</Route>
+			<Route path='/blog/ryan/exception-handling'>
+				<NavMenu isBlogger={true}/>
+				<ExceptionHandling/>
+			</Route>
+			<Route path='/blog/ryan/java-collections'>
+				<NavMenu isBlogger={true}/>
+				<JavaCollections/>
+			</Route>
+			<Route path='/blog/ryan/arraylists'>
+				<NavMenu isBlogger={true}/>
+				<ArrayLists/>
+			</Route>
+			<Route path='/blog/ryan/arrays'>
+				<NavMenu isBlogger={true}/>
+				<Arrays/>
+			</Route>
+			<Route path='/blog/ryan/java'>
+				<NavMenu isBlogger={true}/>
+				<Java/>
+			</Route>
+			<Route path='/blog/ryan/oop'>
+				<NavMenu isBlogger={true}/>
+				<Oop/>
 			</Route>
 			{/* Portfolios */}
 			<Route path='/portfolio'>

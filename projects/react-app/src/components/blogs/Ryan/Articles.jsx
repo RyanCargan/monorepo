@@ -81,31 +81,57 @@ return (
 	{transition((style, item) =>
 		item === 2 ?
 		<animated.div style={style} className='list-group'>
+		<Link href='/blog/ryan/java-lineage'>
 		<button className='list-block'>Java's Lineage & Evolution</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/databases'>
 		<button className='list-block'>SQL, JSON & NoSQL Databases</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/jooq'>
 		<button className='list-block'>Java, SQL & the Role of JOOQ</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/searching-and-sorting'>
 		<button className='list-block'>Searching & Sorting in Java</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/data-structures'>
 		<button className='list-block'>Using Built-In Data Structures & Creating New Ones in Java</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/polymorphism'>
 		<button className='list-block'>Polymorphism with Method Overloading & Overriding</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/concurrency'>
 		<button className='list-block'>Java Threads, Concurrency & Project Loom</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/exception-handling'>
 		<button className='list-block'>The Evolution of Exception Handling in Java</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/java-collections'>
 		<button className='list-block'>Using Java Collections</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/arraylists'>
 		<button className='list-block'>Arrays & ArrayLists in Java</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/arrays'>
 		<button className='list-block'>The Different Use Cases of Arrays in Programming</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/java'>
 		<button className='list-block'>The Main Components of the Java Programming Language</button>
+		</Link>
 		<br />
+		<Link href='/blog/ryan/oop'>
 		<button className='list-block'>Common Object-Oriented Concepts for Job Interviews</button>
+		</Link>
 		</animated.div>
 		:''
 	)}
