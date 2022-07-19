@@ -1,0 +1,3 @@
+[submodule "projects/blog"]
+	path = projects/blog
+	url = https://github.com/RyanCargan/orgajs.git
