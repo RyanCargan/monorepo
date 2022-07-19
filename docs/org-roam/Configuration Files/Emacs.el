@@ -19,12 +19,20 @@
 
 (use-package restart-emacs)
 ;(use-package auto-indent-mode) ; Still bugged? https://github.com/company-mode/company-mode/issues/1002
+(use-package esup)
 
 (use-package move-text
   :init (move-text-default-bindings))
 
 (use-package which-key
   :init (which-key-mode))
+
+(use-package read-aloud)
+
+;(use-package eloud
+;  :config (setq eloud-espeak-path "espeak"))
+
+;(load-file "/nix/store/0c1dvnb6513zbxx2rzigg5ny1rmlixpq-emacspeak-54.0/share/emacs/site-lisp/emacspeak/lisp/emacspeak-setup.el")
 
 ;(use-package tree-sitter)
 ;(use-package tree-sitter-langs)
@@ -73,20 +81,12 @@
     :defer t
     :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
-  (use-package company-nixos-options)
+  ;(use-package company-nixos-options)
 
   ;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
 
 (use-package company-box
   :hook (company-mode . company-box-mode))
-
-(use-package nix-mode
-  :mode "\\.nix\\'"
-  :config
-  (add-hook 'nix-mode-hook
-	    '(lambda ()
-	       (set (make-local-variable 'company-backends)
-		    '((company-dabbrev-code company-nixos-options)))))) ; Does the order of the backends in the list matter?
 
 (use-package go-mode)
 
@@ -485,6 +485,8 @@
   "Return yes or no."
   (interactive)
   (if (y-or-n-p "Run operation?") "yes" "no"))
+
+(find-file "~/dev/work/writings/fiction/shorts/The Star Hunter/README.org")
 
 (use-package zone-nyan)
 

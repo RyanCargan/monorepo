@@ -35,6 +35,7 @@ Then edit the config as needed from this file you're on right now.
 #+begin_src elisp
   (use-package restart-emacs)
   ;(use-package auto-indent-mode) ; Still bugged? https://github.com/company-mode/company-mode/issues/1002
+  (use-package esup)
 #+end_src
 ** Development
 *** Utilities
@@ -44,6 +45,13 @@ Then edit the config as needed from this file you're on right now.
 
 (use-package which-key
   :init (which-key-mode))
+
+(use-package read-aloud)
+
+;(use-package eloud
+;  :config (setq eloud-espeak-path "espeak"))
+
+;(load-file "/nix/store/0c1dvnb6513zbxx2rzigg5ny1rmlixpq-emacspeak-54.0/share/emacs/site-lisp/emacspeak/lisp/emacspeak-setup.el")
 
 ;(use-package tree-sitter)
 ;(use-package tree-sitter-langs)
@@ -95,7 +103,7 @@ Then edit the config as needed from this file you're on right now.
     :defer t
     :init (add-hook 'global-company-mode-hook #'company-quickhelp-mode))
 
-  (use-package company-nixos-options)
+  ;(use-package company-nixos-options)
 
   ;(add-to-list 'company-backends 'company-nixos-options) ; Buggy. Avoid globals.
 
@@ -105,7 +113,7 @@ Then edit the config as needed from this file you're on right now.
 #+end_src
 *** Languages (Modes)
 **** Nix
-#+begin_src elisp
+#+begin_src elisp :tangle no
 (use-package nix-mode
   :mode "\\.nix\\'"
   :config
@@ -347,6 +355,11 @@ Then edit the config as needed from this file you're on right now.
     :after evil
     :init
     (evil-collection-init))
+  ;(use-package evil-numbers
+  ;  :after evil
+  ;  :config
+  ;  (define-key evil-normal-state-map (kbd "<kp-add>") 'evil-numbers/inc-at-pt)
+  ;  (define-key evil-normal-state-map (kbd "<kp-subtract>") 'evil-numbers/dec-at-pt))
 #+end_src
 ** Projectile
 TODO.
@@ -624,6 +637,10 @@ TODO. Code not ready.
     "Return yes or no."
     (interactive)
     (if (y-or-n-p "Run operation?") "yes" "no"))
+#+end_src
+** Utility code to run at startup
+#+begin_src elisp
+(find-file "~/dev/work/writings/fiction/shorts/The Star Hunter/README.org") 
 #+end_src
 ** Miscellaneous packages
 #+begin_src elisp

@@ -70,59 +70,59 @@ const RouteList = () => {
 			</Route>
 			{/* Ryan's Articles */}
 			<Route path='/blog/ryan/tdd'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Tdd/>
 			</Route>
 			<Route path='/blog/ryan/java-lineage'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<JavaLineage/>
 			</Route>
 			<Route path='/blog/ryan/databases'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Databases/>
 			</Route>
 			<Route path='/blog/ryan/jooq'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Jooq/>
 			</Route>
 			<Route path='/blog/ryan/searching-and-sorting'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<SearchingAndSorting/>
 			</Route>
 			<Route path='/blog/ryan/data-structures'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<DataStructures/>
 			</Route>
 			<Route path='/blog/ryan/polymorphism'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Polymorphism/>
 			</Route>
 			<Route path='/blog/ryan/concurrency'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Concurrency/>
 			</Route>
 			<Route path='/blog/ryan/exception-handling'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<ExceptionHandling/>
 			</Route>
 			<Route path='/blog/ryan/java-collections'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<JavaCollections/>
 			</Route>
 			<Route path='/blog/ryan/arraylists'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<ArrayLists/>
 			</Route>
 			<Route path='/blog/ryan/arrays'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Arrays/>
 			</Route>
 			<Route path='/blog/ryan/java'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Java/>
 			</Route>
 			<Route path='/blog/ryan/oop'>
-				<NavMenu isBlogger={true}/>
+				<NavMenu isArticle={true}/>
 				<Oop/>
 			</Route>
 			{/* Portfolios */}
