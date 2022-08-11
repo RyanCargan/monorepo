@@ -1,0 +1,3 @@
+* Python Testbed
+
+Miscellaneous Python experiments including data structure problems, GPGPU and software rendering.

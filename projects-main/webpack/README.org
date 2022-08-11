@@ -1,0 +1,14 @@
+#+title: Webpack + Orga
+
+This is a minimal webpack website that recognizes org-mode files as pages.
+
+-----
+
+* Running locally
+
+Seems to work fine so far with pnpm after being separated from its original monorepo.
+
+#+begin_src shell
+yarn start
+#+end_src
+

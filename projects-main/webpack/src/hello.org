@@ -1,0 +1,20 @@
+#+jsx: import Box from './box'
+
+* Hello
+
+#+begin_export jsx
+export default ({ children }) =>
+  <div style={{ padding: 20 }}>
+    <h1 style={{ color: 'blue' }}>Orga + Webpack</h1>
+    {children}
+  </div>
+#+end_export
+
+This is *org-mode* with /JSX/!
+
+-----
+
+#+begin_export jsx
+<Box>the tomato box</Box>
+#+end_export
+
