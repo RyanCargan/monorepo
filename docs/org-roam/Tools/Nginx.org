@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       46bb45c0-838d-430a-825e-c1661ba5547d
-:END:
-Nginx web server.
-Usable as a reverse proxy, load balancer, mail proxy and HTTP cache.

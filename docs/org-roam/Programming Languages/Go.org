@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       09fcddad-5f77-4989-a2c2-07f1aae4263a
-:END:
-Golang.

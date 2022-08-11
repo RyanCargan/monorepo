@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       7a139d2e-230f-41c7-8c5b-f44f8f8824ca
-:END:
-Kotlin + JNI app.

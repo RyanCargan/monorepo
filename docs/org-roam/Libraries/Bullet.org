@@ -1,7 +1,0 @@
-:PROPERTIES:
-:ID:       4286325f-7406-44ff-b668-948d14bccee2
-:END:
-Physics engine.
-WebAssembly version is Ammo.js.
-* Supplementary Libraries
-** Ammo.js

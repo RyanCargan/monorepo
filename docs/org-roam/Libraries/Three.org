@@ -1,6 +1,0 @@
-:PROPERTIES:
-:ID:       af220afb-8f2c-4db6-8b60-59f96c403bde
-:END:
-Rendering engine.
-* Supplementary Libraries
-** React-Three-Fiber

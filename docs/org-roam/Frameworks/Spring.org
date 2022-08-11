@@ -1,5 +1,0 @@
-:PROPERTIES:
-:ID:       ab2a4170-e487-43d5-96c8-3ff50236557e
-:END:
-* Spring Boot
-* Spring Core

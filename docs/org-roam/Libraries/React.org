@@ -1,8 +1,0 @@
-:PROPERTIES:
-:ID:       4dadcf91-a0d8-4fcf-addd-859eb4fdad9b
-:END:
-Rendering library.
-* Supplementary Libraries
-** Wouter
-** Effector (Effector-React)
-** React-Spring
